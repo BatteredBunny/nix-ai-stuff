@@ -26,7 +26,7 @@
         with pkgs; {
           overlay = final: prev: {
             exllamav2 = exllamav2;
-            gekko = gekko
+            gekko = gekko;
             autogptq = autogptq;
           };
 
