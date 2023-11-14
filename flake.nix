@@ -21,13 +21,15 @@
 
         exllamav2 = pkgs.callPackage ./exllamav2.nix {};
         gekko = pkgs.callPackage ./gekko.nix {};
-        autogptq = pkgs.callPackage ./autogptq.nix { gekko = gekko; };
+        autogptq = pkgs.callPackage ./autogptq.nix {gekko = gekko;};
+        lmstudio = pkgs.callPackage ./lmstudio.nix {};
       in
         with pkgs; {
           overlay = final: prev: {
             exllamav2 = exllamav2;
             gekko = gekko;
             autogptq = autogptq;
+            lmstudio = lmstudio;
           };
 
           devShells.default = mkShell {
@@ -44,6 +46,7 @@
           packages.exllamav2 = exllamav2;
           packages.gekko = gekko;
           packages.autogptq = autogptq;
+          packages.lmstudio = lmstudio;
         }
     );
 }
