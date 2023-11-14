@@ -23,7 +23,7 @@
           overlay = final: prev: {
             exllamav2 = pkgs.callPackage ./exllamav2.nix {};
             gekko = pkgs.callPackage ./gekko.nix {};
-            autogptq = pkgs.callPackage ./autogptq.nix {};
+            autogptq = pkgs.callPackage ./autogptq.nix { gekko = gekko; };
           };
 
           devShells.default = mkShell {
@@ -39,7 +39,7 @@
 
           packages.exllamav2 = pkgs.callPackage ./exllamav2.nix {};
           packages.gekko = pkgs.callPackage ./gekko.nix {};
-          packages.autogptq = pkgs.callPackage ./autogptq.nix {};
+          packages.autogptq = pkgs.callPackage ./autogptq.nix { gekko = packages.gekko; };
         }
     );
 }
