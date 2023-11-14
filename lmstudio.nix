@@ -49,15 +49,8 @@
     sourceRoot = "LM Studio.app";
 
     installPhase = ''
-      mkdir -p $out/Applications/LM\ Studio.app $out/bin
+      mkdir -p $out/Applications/LM\ Studio.app
       cp -R . $out/Applications/LM\ Studio.app
-
-      ln -s ../Applications/LM\ Studio.app/Contents/MacOS/Frameworks/LM\ Studio\ Helper\ \(GPU\).app/Contents/Macos/LM\ Studio\ Helper\ \(GPU\) $out/bin
-      ln -s ../Applications/LM\ Studio.app/Contents/MacOS/Frameworks/LM\ Studio\ Helper\ \(Plugin\).app/Contents/Macos/LM\ Studio\ Helper\ \(Plugin\) $out/bin
-      ln -s ../Applications/LM\ Studio.app/Contents/MacOS/Frameworks/LM\ Studio\ Helper\ \(Renderer\).app/Contents/Macos/LM\ Studio\ Helper\ \(Renderer\) $out/bin
-      ln -s ../Applications/LM\ Studio.app/Contents/MacOS/Frameworks/LM\ Studio\ Helper.app/Contents/Macos/LM\ Studio\ Helper $out/bin
-
-      ln -s ../Applications/LM\ Studio.app/Contents/MacOS/LM\ Studio $out/bin/lmstudio
     '';
   };
 in
