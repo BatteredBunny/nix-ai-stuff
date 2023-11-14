@@ -8,7 +8,7 @@
 }:
 python3Packages.buildPythonPackage rec {
   pname = "auto_gptq";
-  version = "0.5.0";
+  version = "0.5.1";
   pyproject = true;
 
   BUILD_CUDA_EXT = "1";

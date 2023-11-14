@@ -1,7 +1,7 @@
 {
   python3Packages,
   fetchPypi,
-  python3,
+  lib,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "gekko";
@@ -13,7 +13,13 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-WNyEdJXBXfhrD1LywBBJ3Ehk+CnUS8VYbJFK8mpKV20=";
   };
 
-  nativeBuildInputs = [
-    python3.pkgs.setuptools
+  nativeBuildInputs = with python3Packages; [
+    setuptools
   ];
+
+  meta = with lib; {
+    homepage = "https://github.com/BYU-PRISM/GEKKO";
+    description = "Machine learning and optimization for dynamic systems";
+    license = licenses.mit;
+  };
 }
