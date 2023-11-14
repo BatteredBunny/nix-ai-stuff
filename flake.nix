@@ -23,6 +23,7 @@
         gekko = pkgs.callPackage ./gekko.nix {};
         autogptq = pkgs.callPackage ./autogptq.nix {gekko = gekko;};
         lmstudio = pkgs.callPackage ./lmstudio.nix {};
+        ava = pkgs.callPackage ./ava.nix {};
       in
         with pkgs; {
           overlay = final: prev: {
@@ -30,6 +31,7 @@
             gekko = gekko;
             autogptq = autogptq;
             lmstudio = lmstudio;
+            ava = ava;
           };
 
           devShells.default = mkShell {
@@ -47,6 +49,7 @@
           packages.gekko = gekko;
           packages.autogptq = autogptq;
           packages.lmstudio = lmstudio;
+          packages.ava = ava;
         }
     );
 }
