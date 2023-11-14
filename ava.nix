@@ -29,6 +29,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://www.avapls.com/";
     description = "A GUI macos LLM program";
+    license = licenses.unfree;
     platforms = platforms.darwin;
     mainProgram = "ava";
   };

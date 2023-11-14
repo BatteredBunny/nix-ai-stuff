@@ -19,6 +19,7 @@ appimageTools.wrapType2 rec {
   meta = with lib; {
     description = "A GUI tool to run LLMs";
     homepage = "https://lmstudio.ai/";
+    license = licenses.unfree;
     platforms = platforms.linux;
     mainProgram = pname;
   };
