@@ -18,12 +18,16 @@
             cudaSupport = true;
           };
         };
+
+        exllamav2 = pkgs.callPackage ./exllamav2.nix {};
+        gekko = pkgs.callPackage ./gekko.nix {};
+        autogptq = pkgs.callPackage ./autogptq.nix { gekko = gekko; };
       in
         with pkgs; {
           overlay = final: prev: {
-            exllamav2 = pkgs.callPackage ./exllamav2.nix {};
-            gekko = pkgs.callPackage ./gekko.nix {};
-            autogptq = pkgs.callPackage ./autogptq.nix { gekko = gekko; };
+            exllamav2 = exllamav2;
+            gekko = gekko
+            autogptq = autogptq;
           };
 
           devShells.default = mkShell {
@@ -37,9 +41,9 @@
             '';
           };
 
-          packages.exllamav2 = pkgs.callPackage ./exllamav2.nix {};
-          packages.gekko = pkgs.callPackage ./gekko.nix {};
-          packages.autogptq = pkgs.callPackage ./autogptq.nix { gekko = packages.gekko; };
+          packages.exllamav2 = exllamav2;
+          packages.gekko = gekko;
+          packages.autogptq = autogptq;
         }
     );
 }
