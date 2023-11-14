@@ -1,5 +1,5 @@
 # nix-ai-stuff
-Nix flake with several LLM projects
+Nix flake with several LLM projects, everything here is focused on CUDA.
 
 ## Packages
 - exllamav2 0.0.8
