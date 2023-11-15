@@ -17,6 +17,12 @@ python3Packages.buildPythonPackage rec {
     setuptools
   ];
 
+  propagatedBuildInputs = with python3Packages; [
+    numpy
+  ];
+
+  pythonImportsCheck = ["gekko"];
+
   meta = with lib; {
     homepage = "https://github.com/BYU-PRISM/GEKKO";
     description = "Machine learning and optimization for dynamic systems";
