@@ -15,11 +15,11 @@ python3Packages.buildPythonPackage rec {
 
   nativeBuildInputs = with python3Packages; [
     setuptools
+    wheel
   ];
 
   propagatedBuildInputs = with python3Packages; [
     numpy
-    pandas
   ];
 
   pythonImportsCheck = ["gekko"];
