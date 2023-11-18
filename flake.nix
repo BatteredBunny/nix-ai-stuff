@@ -30,6 +30,7 @@
         lmstudio = pkgs.callPackage ./pkgs/lmstudio.nix {};
         ava = pkgs.callPackage ./pkgs/ava.nix {};
         tensor_parallel = pkgs.callPackage ./pkgs/tensor_parallel.nix {};
+        text-generation-inference = pkgs.callPackage ./pkgs/text-generation-inference.nix {};
       in
         with pkgs; {
           overlay = final: prev: {
@@ -39,6 +40,7 @@
             lmstudio = lmstudio;
             ava = ava;
             tensor_parallel = tensor_parallel;
+            text-generation-inference = text-generation-inference;
           };
 
           devShells.default = mkShell {
@@ -58,6 +60,7 @@
           packages.lmstudio = lmstudio;
           packages.ava = ava;
           packages.tensor_parallel = tensor_parallel;
+          packages.text-generation-inference = text-generation-inference;
         }
     );
 }
