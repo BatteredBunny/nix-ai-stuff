@@ -19,11 +19,17 @@
           };
         };
 
-        exllamav2 = pkgs.callPackage ./exllamav2.nix {};
-        gekko = pkgs.callPackage ./gekko.nix {};
-        autogptq = pkgs.callPackage ./autogptq.nix {gekko = gekko;};
-        lmstudio = pkgs.callPackage ./lmstudio.nix {};
-        ava = pkgs.callPackage ./ava.nix {};
+        nvidia = pkgs.callPackage ./nvidia.nix {};
+
+        exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix {nvidia = nvidia;};
+        gekko = pkgs.callPackage ./pkgs/gekko.nix {};
+        autogptq = pkgs.callPackage ./pkgs/autogptq.nix {
+          gekko = gekko;
+          nvidia = nvidia;
+        };
+        lmstudio = pkgs.callPackage ./pkgs/lmstudio.nix {};
+        ava = pkgs.callPackage ./pkgs/ava.nix {};
+        tensor_parallel = pkgs.callPackage ./pkgs/tensor_parallel.nix {};
       in
         with pkgs; {
           overlay = final: prev: {
@@ -32,6 +38,7 @@
             autogptq = autogptq;
             lmstudio = lmstudio;
             ava = ava;
+            tensor_parallel = tensor_parallel;
           };
 
           devShells.default = mkShell {
@@ -50,6 +57,7 @@
           packages.autogptq = autogptq;
           packages.lmstudio = lmstudio;
           packages.ava = ava;
+          packages.tensor_parallel = tensor_parallel;
         }
     );
 }
