@@ -3,42 +3,43 @@
   fetchFromGitHub,
   pkgs,
   gekko,
-  nvidia,
-}:
-python3Packages.buildPythonPackage rec {
-  inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
+}: let
+  nvidia = pkgs.callPackage ../nvidia.nix {};
+in
+  python3Packages.buildPythonPackage rec {
+    inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
 
-  pname = "auto_gptq";
-  version = "0.5.1";
-  pyproject = true;
+    pname = "auto_gptq";
+    version = "0.5.1";
+    pyproject = true;
 
-  src = fetchFromGitHub {
-    owner = "PanQiWei";
-    repo = "AutoGPTQ";
-    rev = "v${version}";
-    hash = "sha256-eZJRapxfJaJ6IdvPUhJnlJqvTpctFTGY05jVAmTgrDc=";
-  };
+    src = fetchFromGitHub {
+      owner = "PanQiWei";
+      repo = "AutoGPTQ";
+      rev = "v${version}";
+      hash = "sha256-qdpZ5FLAvTwzj2okrqqt43BzjjQ3+Cg6BX+IZkHpgGo=";
+    };
 
-  buildInputs = with pkgs; [
-    python3Packages.pybind11
-    cudatoolkit
-  ];
+    buildInputs = with pkgs; [
+      python3Packages.pybind11
+      cudatoolkit
+    ];
 
-  nativeBuildInputs = with pkgs; [
-    which
-    ninja
-  ];
+    nativeBuildInputs = with pkgs; [
+      which
+      ninja
+    ];
 
-  propagatedBuildInputs = [
-    python3Packages.torch
-    python3Packages.pandas
-    python3Packages.packaging
-    python3Packages.accelerate
-    python3Packages.transformers
-    python3Packages.datasets
-    python3Packages.peft
-    gekko
-  ];
+    propagatedBuildInputs = with python3Packages; [
+      torch
+      pandas
+      packaging
+      accelerate
+      transformers
+      datasets
+      peft
+      gekko
+    ];
 
-  pythonImportsCheck = ["auto_gptq"];
-}
+    pythonImportsCheck = ["auto_gptq"];
+  }

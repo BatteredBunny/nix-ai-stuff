@@ -19,13 +19,10 @@
           };
         };
 
-        nvidia = pkgs.callPackage ./nvidia.nix {};
-
-        exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix {nvidia = nvidia;};
+        exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix {};
         gekko = pkgs.callPackage ./pkgs/gekko.nix {};
         autogptq = pkgs.callPackage ./pkgs/autogptq.nix {
           gekko = gekko;
-          nvidia = nvidia;
         };
         lmstudio = pkgs.callPackage ./pkgs/lmstudio.nix {};
         ava = pkgs.callPackage ./pkgs/ava.nix {};
