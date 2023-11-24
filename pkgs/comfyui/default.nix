@@ -7,14 +7,14 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "unstable-2023-11-23";
+  version = "unstable-2023-11-24";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
-    rev = "022033a0e75901c7c357ab96e1c804fd5da05770";
-    hash = "sha256-gRZ7Pf8RRUwqbNtoFg7cnNF0uYVuE+qBXrrrw02/PAE=";
+    rev = "916e9c998c5952a30e7795ccfda74186a82a2a06";
+    hash = "sha256-Eadcig7nlajLxIOFEQSXqSA3CBhKdd5+mUdMosOOxeA=";
   };
 
   propagatedBuildInputs = with python3Packages; [
@@ -55,22 +55,24 @@ python3Packages.buildPythonApplication rec {
 
   nativeBuildInputs = [python3];
 
-  postFixup = ''
-    sed -i -e '1i#!/usr/bin/python' $out/bin/main.py
-    patchShebangs $out/bin/main.py
-
-    wrapProgram "$out/bin/main.py" \
-      --prefix PYTHONPATH : "$PYTHONPATH" \
-
-    mv $out/bin/*.py $out/lib/python3*/site-packages/
-    ln -s $out/lib/python3*/site-packages/main.py $out/bin/comfyui
-  '';
-
   postInstall = ''
+    cp *.py $out/lib/python3*/site-packages/
     cp -r comfy $out/lib/python3*/site-packages/
     cp -r comfy_extras $out/lib/python3*/site-packages/
 
     cp -r web $out/lib
+  '';
+
+  postFixup = ''
+    chmod +x $out/lib/python3*/site-packages/main.py
+    sed -i -e '1i#!/usr/bin/python' $out/lib/python3*/site-packages/main.py
+    patchShebangs $out/lib/python3*/site-packages/main.py
+
+    mkdir $out/bin
+    ln -s $out/lib/python3*/site-packages/main.py $out/bin/comfyui
+
+    wrapProgram "$out/bin/comfyui" \
+      --prefix PYTHONPATH : "$PYTHONPATH" \
   '';
 
   meta = with lib; {

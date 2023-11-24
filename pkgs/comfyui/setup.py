@@ -7,15 +7,6 @@ setup(
     name="comfyui",
     description="The most powerful and modular stable diffusion GUI with a graph/nodes interface",
     install_requires=install_requires,
-    scripts=[
-        "main.py",
-        "execution.py",
-        "nodes.py",
-        "folder_paths.py",
-        "cuda_malloc.py",
-        "latent_preview.py",
-        "server.py",
-    ],
     packages=[
         "comfy",
         "comfy.cldm",
