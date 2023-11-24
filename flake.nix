@@ -4,6 +4,11 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
+  nixConfig.extra-substituters = [
+    "https://cuda-maintainers.cachix.org"
+    "https://ai.cachix.org"
+  ];
+
   outputs = {
     nixpkgs,
     flake-utils,
