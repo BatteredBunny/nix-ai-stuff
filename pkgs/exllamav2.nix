@@ -9,14 +9,14 @@ in
     inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
 
     pname = "exllamav2";
-    version = "0.0.8";
+    version = "0.0.9";
     pyproject = true;
 
     src = fetchFromGitHub {
       owner = "turboderp";
       repo = "exllamav2";
       rev = "v${version}";
-      hash = "sha256-//AF3ZSeTZHTPRd0s71PbANgQ7f8KViIsCw7Vd2lqaE=";
+      hash = "sha256-rEKoqaDGv9HTiatseE9Q9wNmX+rV4mB2bNyC0X/3B7k=";
     };
 
     buildInputs = with pkgs; [
