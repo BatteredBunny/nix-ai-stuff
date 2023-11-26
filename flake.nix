@@ -5,6 +5,7 @@
   };
 
   nixConfig.extra-substituters = [
+    "https://nix-ai-stuff.cachix.org"
     "https://cuda-maintainers.cachix.org"
     "https://ai.cachix.org"
   ];
@@ -37,14 +38,7 @@
       in
         with pkgs; {
           overlay = final: prev: {
-            exllamav2 = exllamav2;
-            gekko = gekko;
-            autogptq = autogptq;
-            lmstudio = lmstudio;
-            ava = ava;
-            tensor_parallel = tensor_parallel;
-            text-generation-inference = text-generation-inference;
-            comfyui = comfyui;
+            inherit exllamav2 gekko autogptq lmstudio ava tensor_parallel text-generation-inference comfyui;
           };
 
           devShells.default = mkShell {
@@ -58,14 +52,9 @@
             '';
           };
 
-          packages.exllamav2 = exllamav2;
-          packages.gekko = gekko;
-          packages.autogptq = autogptq;
-          packages.lmstudio = lmstudio;
-          packages.ava = ava;
-          packages.tensor_parallel = tensor_parallel;
-          packages.text-generation-inference = text-generation-inference;
-          packages.comfyui = comfyui;
+          packages = {
+            inherit exllamav2 gekko autogptq lmstudio ava tensor_parallel text-generation-inference comfyui;
+          };
         }
     );
 }
