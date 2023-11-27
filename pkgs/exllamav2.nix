@@ -2,6 +2,7 @@
   python3Packages,
   fetchFromGitHub,
   pkgs,
+  lib,
 }: let
   nvidia = pkgs.callPackage ../nvidia.nix {};
 in
@@ -14,7 +15,7 @@ in
 
     src = fetchFromGitHub {
       owner = "turboderp";
-      repo = "exllamav2";
+      repo = pname;
       rev = "v${version}";
       hash = "sha256-rEKoqaDGv9HTiatseE9Q9wNmX+rV4mB2bNyC0X/3B7k=";
     };
@@ -40,5 +41,11 @@ in
       regex
     ];
 
-    pythonImportsCheck = ["exllamav2"];
+    pythonImportsCheck = [pname];
+
+    meta = with lib; {
+      homepage = "https://github.com/turboderp/exllamav2";
+      description = " A fast inference library for running LLMs locally on modern consumer-class GPUs";
+      license = licenses.mit;
+    };
   }

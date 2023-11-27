@@ -3,6 +3,7 @@
   fetchFromGitHub,
   pkgs,
   gekko,
+  lib,
 }: let
   nvidia = pkgs.callPackage ../nvidia.nix {};
 in
@@ -41,5 +42,11 @@ in
       gekko
     ];
 
-    pythonImportsCheck = ["auto_gptq"];
+    pythonImportsCheck = [pname];
+
+    meta = with lib; {
+      homepage = "https://github.com/PanQiWei/AutoGPTQ";
+      description = "An easy-to-use LLMs quantization package";
+      license = licenses.mit;
+    };
   }

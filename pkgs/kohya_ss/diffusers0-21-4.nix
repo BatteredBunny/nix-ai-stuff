@@ -1,18 +1,19 @@
 {
-  lib,
   python3Packages,
   fetchFromGitHub,
+  lib,
+  xformers-cuda,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "diffusers";
-  version = "0.23.1";
+  version = "0.21.4";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "huggingface";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-KRdOA4TIfneKXUBvRb1a193/JZXM5Br1MxogiK+CFss=";
+    hash = "sha256-nyKZVnthADMFA2DVlCPLYJUf0R3fV++OzGhjHDJnMI0=";
   };
 
   nativeBuildInputs = with python3Packages; [
@@ -25,6 +26,7 @@ python3Packages.buildPythonPackage rec {
     huggingface-hub
     transformers
     pillow
+    xformers-cuda
   ];
 
   pythonImportsCheck = [pname];
