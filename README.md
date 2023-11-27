@@ -9,4 +9,4 @@ Nix flake with several LLM projects, everything here is focused on CUDA.
 - [ava](https://www.avapls.com/) 2023-10-26
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
 - [text-generation-inference](https://github.com/huggingface/text-generation-inference) 1.1.1
-- [comfyui](https://github.com/comfyanonymous/ComfyUI) unstable-2023-11-23
+- [comfyui](https://github.com/comfyanonymous/ComfyUI) unstable-2023-11-24
