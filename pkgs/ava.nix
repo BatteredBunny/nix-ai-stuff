@@ -31,6 +31,6 @@ stdenv.mkDerivation rec {
     description = "A GUI macos LLM program";
     license = licenses.unfree;
     platforms = platforms.darwin;
-    mainProgram = "ava";
+    mainProgram = pname;
   };
 }

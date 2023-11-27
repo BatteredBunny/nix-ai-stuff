@@ -24,37 +24,43 @@
             cudaSupport = true;
           };
         };
+      in rec {
+        overlay = final: prev: packages;
 
-        exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix {};
-        gekko = pkgs.callPackage ./pkgs/gekko.nix {};
-        autogptq = pkgs.callPackage ./pkgs/autogptq.nix {
-          gekko = gekko;
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            python3
+            cudatoolkit
+          ];
+
+          shellHook = ''
+            export CUDA_PATH=${pkgs.cudatoolkit}
+          '';
         };
-        lmstudio = pkgs.callPackage ./pkgs/lmstudio.nix {};
-        ava = pkgs.callPackage ./pkgs/ava.nix {};
-        tensor_parallel = pkgs.callPackage ./pkgs/tensor_parallel.nix {};
-        text-generation-inference = pkgs.callPackage ./pkgs/text-generation-inference.nix {};
-        comfyui = pkgs.callPackage ./pkgs/comfyui/default.nix {};
-      in
-        with pkgs; {
-          overlay = final: prev: {
-            inherit exllamav2 gekko autogptq lmstudio ava tensor_parallel text-generation-inference comfyui;
-          };
 
-          devShells.default = mkShell {
-            buildInputs = [
-              python3
-              cudatoolkit
-            ];
-
-            shellHook = ''
-              export CUDA_PATH=${cudatoolkit}
-            '';
+        packages = rec {
+          exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix {};
+          gekko = pkgs.callPackage ./pkgs/gekko.nix {};
+          autogptq = pkgs.callPackage ./pkgs/autogptq.nix {
+            gekko = gekko;
           };
+          lmstudio = pkgs.callPackage ./pkgs/lmstudio.nix {};
+          ava = pkgs.callPackage ./pkgs/ava.nix {};
+          tensor_parallel = pkgs.callPackage ./pkgs/tensor_parallel.nix {};
+          text-generation-inference = pkgs.callPackage ./pkgs/text-generation-inference.nix {};
+          comfyui = pkgs.callPackage ./pkgs/comfyui/default.nix {};
 
-          packages = {
-            inherit exllamav2 gekko autogptq lmstudio ava tensor_parallel text-generation-inference comfyui;
+          diffusers = pkgs.callPackage ./pkgs/diffusers.nix {};
+          lycoris-lora = pkgs.callPackage ./pkgs/lycoris-lora.nix {
+            inherit diffusers;
           };
-        }
+          open-clip-torch = pkgs.callPackage ./pkgs/open-clip-torch.nix {};
+          dadaptation = pkgs.callPackage ./pkgs/dadaptation.nix {};
+          prodigyopt = pkgs.callPackage ./pkgs/prodigyopt.nix {};
+          kohya_ss = pkgs.callPackage ./pkgs/kohya_ss/default.nix {
+            inherit dadaptation open-clip-torch prodigyopt;
+          };
+        };
+      }
     );
 }

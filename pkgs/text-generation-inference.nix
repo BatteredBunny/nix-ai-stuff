@@ -15,7 +15,7 @@ rustPlatform.buildRustPackage rec {
 
   src = fetchFromGitHub {
     owner = "huggingface";
-    repo = "text-generation-inference";
+    repo = pname;
     rev = "v${version}";
     hash = "sha256-aOo/pop31lf8Wpxp3WNYvRWQVJbkJBWaDo2/oX7bMEk=";
   };
@@ -46,6 +46,6 @@ rustPlatform.buildRustPackage rec {
   meta = {
     description = "Large Language Model Text Generation Inference";
     homepage = "https://github.com/huggingface/text-generation-inference";
-    mainProgram = "text-generation-inference";
+    mainProgram = pname;
   };
 }

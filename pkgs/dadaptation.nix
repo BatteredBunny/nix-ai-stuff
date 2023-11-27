@@ -1,16 +1,16 @@
 {
+  lib,
   python3Packages,
   fetchPypi,
-  lib,
 }:
 python3Packages.buildPythonPackage rec {
-  pname = "gekko";
-  version = "1.0.6";
+  pname = "dadaptation";
+  version = "3.1";
   pyproject = true;
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-WNyEdJXBXfhrD1LywBBJ3Ehk+CnUS8VYbJFK8mpKV20=";
+    hash = "sha256-qkFZyZ8xtBA6Uwz556G3dpEuYcMX/2hLJxdR1NGDLfc=";
   };
 
   nativeBuildInputs = with python3Packages; [
@@ -19,14 +19,14 @@ python3Packages.buildPythonPackage rec {
   ];
 
   propagatedBuildInputs = with python3Packages; [
-    numpy
+    torch
   ];
 
   pythonImportsCheck = [pname];
 
   meta = with lib; {
-    homepage = "https://github.com/BYU-PRISM/GEKKO";
-    description = "Machine learning and optimization for dynamic systems";
+    description = "Learning Rate Free Learning for Adam, SGD and AdaGrad";
+    homepage = "https://github.com/facebookresearch/dadaptation";
     license = licenses.mit;
   };
 }
