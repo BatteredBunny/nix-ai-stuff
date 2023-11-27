@@ -22,7 +22,7 @@ python3Packages.buildPythonPackage rec {
     numpy
   ];
 
-  pythonImportsCheck = ["gekko"];
+  pythonImportsCheck = [pname];
 
   meta = with lib; {
     homepage = "https://github.com/BYU-PRISM/GEKKO";
