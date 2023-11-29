@@ -9,7 +9,7 @@ Nix flake with several LLM projects focusing on nvidia/CUDA.
 - [ava](https://www.avapls.com/) 2023-10-26
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
 - [text-generation-inference](https://github.com/huggingface/text-generation-inference) 1.1.1
-- [comfyui](https://github.com/comfyanonymous/ComfyUI) unstable-2023-11-24
+- [comfyui](https://github.com/comfyanonymous/ComfyUI) unstable-2023-11-29
 - [open-clip-torch](https://github.com/mlfoundations/open_clip) 2.23.0
 - [dadaptation](https://github.com/facebookresearch/dadaptation) 3.1
 - [prodigyopt](https://github.com/konstmish/prodigy) 1.0
