@@ -3,7 +3,6 @@ Nix flake with several LLM projects focusing on nvidia/CUDA.
 
 ## Packages
 - [exllamav2](https://github.com/turboderp/exllamav2) 0.0.9
-- [gekko](https://github.com/BYU-PRISM/GEKKO) 1.0.6
 - [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.5.1
 - [lmstudio](https://lmstudio.ai/) 0.2.8
 - [ava](https://www.avapls.com/) 2023-10-26

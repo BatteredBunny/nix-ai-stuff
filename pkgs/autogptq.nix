@@ -2,7 +2,6 @@
   python3Packages,
   fetchFromGitHub,
   pkgs,
-  gekko,
   lib,
 }: let
   nvidia = pkgs.callPackage ../nvidia.nix {};
