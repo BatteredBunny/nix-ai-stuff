@@ -12,6 +12,5 @@ Nix flake with several LLM projects focusing on nvidia/CUDA.
 - [open-clip-torch](https://github.com/mlfoundations/open_clip) 2.23.0
 - [dadaptation](https://github.com/facebookresearch/dadaptation) 3.1
 - [prodigyopt](https://github.com/konstmish/prodigy) 1.0
-- [diffusers](https://github.com/huggingface/diffusers) 0.23.1
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 1.9.0
 - [kohya_ss](https://github.com/bmaltais/kohya_ss) 22.2.1
