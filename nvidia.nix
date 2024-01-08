@@ -2,6 +2,8 @@
   symlinkJoin,
   cudaPackages,
   pkgs,
+  cudaCapabilities ? pkgs.cudaPackages.cudaFlags.cudaCapabilities,
+  lib,
 }: {
   BUILD_CUDA_EXT = "1";
 
@@ -17,6 +19,6 @@
 
   preBuild = ''
     export PATH=${pkgs.gcc11Stdenv.cc}/bin:$PATH
-    export TORCH_CUDA_ARCH_LIST="8.9"
+    export TORCH_CUDA_ARCH_LIST="${lib.concatStringsSep ";" cudaCapabilities}"
   '';
 }

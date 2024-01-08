@@ -47,10 +47,7 @@
           text-generation-inference = pkgs.callPackage ./pkgs/text-generation-inference.nix {};
           comfyui = pkgs.callPackage ./pkgs/comfyui/default.nix {};
 
-          diffusers = pkgs.callPackage ./pkgs/diffusers.nix {};
-          lycoris-lora = pkgs.callPackage ./pkgs/lycoris-lora.nix {
-            inherit diffusers;
-          };
+          lycoris-lora = pkgs.callPackage ./pkgs/lycoris-lora.nix {};
           open-clip-torch = pkgs.callPackage ./pkgs/open-clip-torch.nix {};
           dadaptation = pkgs.callPackage ./pkgs/dadaptation.nix {};
           prodigyopt = pkgs.callPackage ./pkgs/prodigyopt.nix {};
