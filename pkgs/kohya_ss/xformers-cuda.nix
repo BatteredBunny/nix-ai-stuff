@@ -26,7 +26,7 @@ in
   # slightly modified version of https://github.com/NixOS/nixpkgs/pull/234557
   python3Packages.buildPythonPackage rec {
     pname = "xformers";
-    version = "0.0.22post7";
+    version = "0.0.22.post7";
     pyproject = true;
 
     src = fetchFromGitHub {
@@ -35,7 +35,7 @@ in
       rev = "v${version}";
       fetchSubmodules = true;
       leaveDotGit = true;
-      hash = "sha256-6Q9tygVP3ZtX1kkitBbo/lsPGeTQpY7Oyr3g3V2R74I=";
+      hash = "sha256-fknZ5QoB4hop0NprxiQ396oh6BK9IAnkeV92CqK2zgc=";
     };
 
     nativeBuildInputs = with pkgs; [

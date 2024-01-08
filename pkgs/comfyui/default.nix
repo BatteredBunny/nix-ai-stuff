@@ -7,14 +7,14 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "unstable-2023-11-29";
+  version = "unstable-2024-01-02";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
-    rev = "777f6b15225197898a5f49742682a2be859072d7";
-    hash = "sha256-lELGnJcbUNbKeNVQtvBV/j5fu//JJrAGjCEkfPb1oUE=";
+    rev = "2c4e92a98b8338f754855a0db7dce164945e366e";
+    hash = "sha256-yVE3nqvLKUGEd/y2o2hSbfbVM7WkL8EfGug/IYsuOX4=";
   };
 
   propagatedBuildInputs = with python3Packages; [
@@ -24,7 +24,6 @@ python3Packages.buildPythonApplication rec {
     transformers
     safetensors
     aiohttp
-    accelerate
     pyyaml
     pillow
     scipy

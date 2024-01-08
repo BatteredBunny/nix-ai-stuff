@@ -8,23 +8,27 @@
   pkgs,
 }: let
   xformers-cuda = pkgs.callPackage ./xformers-cuda.nix {};
-  diffusers0-21-4 = pkgs.callPackage ./diffusers0-21-4.nix {
-    inherit xformers-cuda;
-  };
+  diffusers = python3Packages.diffusers.overrideAttrs (f: p: {
+    propagatedBuildInputs =
+      p.propagatedBuildInputs
+      ++ [
+        xformers-cuda
+      ];
+  });
   lycoris-lora = pkgs.callPackage ../lycoris-lora.nix {
-    diffusers = diffusers0-21-4;
+    inherit diffusers;
   };
 in
   python3Packages.buildPythonApplication rec {
     pname = "kohya_ss";
-    version = "22.2.1";
+    version = "22.4.0";
     pyproject = true;
 
     src = fetchFromGitHub {
       owner = "bmaltais";
       repo = pname;
       rev = "v${version}";
-      hash = "sha256-EzeRz2p24DDnNRzvftOKB+IlzL4/qfzvkiBA7YMV6oE=";
+      hash = "sha256-SzkU10LSQGyFM+0t7U1t7CPhTbFdtxTcSWshnizCyE0=";
     };
 
     nativeBuildInputs = with python3Packages; [
@@ -36,7 +40,7 @@ in
       aiofiles
       altair
       dadaptation
-      diffusers0-21-4
+      diffusers
       easygui
       einops
       fairscale
