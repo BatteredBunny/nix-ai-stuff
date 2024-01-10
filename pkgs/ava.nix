@@ -7,11 +7,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "ava";
-  version = "2023-10-26";
+  version = "2023-12-05";
 
   src = fetchurl {
     url = "https://s3.amazonaws.com/www.avapls.com/Ava_${version}.dmg";
-    hash = "sha256-GeG27vwKp2+cTJY4oCO5nlGMStgfTwHyn2TFQKLwmRk=";
+    hash = "sha256-Pr5I/Tigm43oqFg55Ygxe/2QLxm9a0wWp+uovfm6uhE=";
   };
 
   nativeBuildInputs = [undmg];
