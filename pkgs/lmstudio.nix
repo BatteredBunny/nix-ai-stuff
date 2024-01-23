@@ -16,7 +16,7 @@
       };
       aarch64-darwin = fetchurl {
         url = "https://s3.amazonaws.com/releases.lmstudio.ai/0.2.10/LM+Studio-0.2.10-arm64.dmg";
-        hash = "sha256-7bN/WSEXZ5q254ItXbu6cnZPi55ZbzbyOxSi+dNOOc4=";
+        hash = "sha256-iRM+gO3y+Jx5ygBymL+uuGx+KLojF/5h6A8TFDvs5PE=";
       };
     }
     .${system}
