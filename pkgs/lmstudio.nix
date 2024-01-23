@@ -11,8 +11,8 @@
   src =
     {
       x86_64-linux = fetchurl {
-        url = "https://s3.amazonaws.com/releases.lmstudio.ai/prerelease/LM_Studio-0.2.10-beta-v3.AppImage";
-        hash = "sha256-J0OHkaJ0gR+FMdPzKnMUV2YPV78sJmCmYLq0AoMqqNM=";
+        url = "https://releases.lmstudio.ai/linux/0.2.10/beta/LM_Studio-0.2.10-beta-v6.AppImage";
+        hash = "sha256-HUeOj7zhjb+AHjurMIvP0FoffHk27gF06PVirp06x5E=";
       };
       aarch64-darwin = fetchurl {
         url = "https://s3.amazonaws.com/releases.lmstudio.ai/0.2.10/LM+Studio-0.2.10-arm64.dmg";
