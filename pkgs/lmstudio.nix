@@ -11,12 +11,12 @@
   src =
     {
       x86_64-linux = fetchurl {
-        url = "https://releases.lmstudio.ai/linux/0.2.10/beta/LM_Studio-0.2.10-beta-v6.AppImage";
-        hash = "sha256-HUeOj7zhjb+AHjurMIvP0FoffHk27gF06PVirp06x5E=";
+        url = "https://releases.lmstudio.ai/linux/0.2.14/beta/LM_Studio-0.2.14-beta-1.AppImage";
+        hash = "sha256-HAmnWJjTeUpSHHVVdy0EVEut/SklND0cZ2HsMJ+m4S0=";
       };
       aarch64-darwin = fetchurl {
-        url = "https://s3.amazonaws.com/releases.lmstudio.ai/0.2.10/LM+Studio-0.2.10-arm64.dmg";
-        hash = "sha256-iRM+gO3y+Jx5ygBymL+uuGx+KLojF/5h6A8TFDvs5PE=";
+        url = "https://releases.lmstudio.ai/mac/arm64/0.2.14/latest/LM-Studio-0.2.14-arm64.dmg";
+        hash = "sha256-J6yOj4qmajxjAVV56OxigXM+jJdzBnXvnt7KUU/c8fM=";
       };
     }
     .${system}
@@ -31,7 +31,7 @@
   };
 
   pname = "lmstudio";
-  version = "0.2.10";
+  version = "0.2.14";
 
   linux = appimageTools.wrapType2 rec {
     inherit pname version src meta;
