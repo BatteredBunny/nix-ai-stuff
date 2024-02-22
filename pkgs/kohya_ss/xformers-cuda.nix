@@ -35,7 +35,7 @@ in
       rev = "v${version}";
       fetchSubmodules = true;
       leaveDotGit = true;
-      hash = "sha256-fknZ5QoB4hop0NprxiQ396oh6BK9IAnkeV92CqK2zgc=";
+      hash = "sha256-PjauTf098pEj6d/WD4XgQnLI2xzr988XiHM0pfgP2j4=";
     };
 
     nativeBuildInputs = with pkgs; [

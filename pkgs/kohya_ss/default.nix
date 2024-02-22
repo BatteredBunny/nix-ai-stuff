@@ -21,14 +21,14 @@
 in
   python3Packages.buildPythonApplication rec {
     pname = "kohya_ss";
-    version = "22.4.0";
+    version = "22.6.1";
     pyproject = true;
 
     src = fetchFromGitHub {
       owner = "bmaltais";
       repo = pname;
       rev = "v${version}";
-      hash = "sha256-SzkU10LSQGyFM+0t7U1t7CPhTbFdtxTcSWshnizCyE0=";
+      hash = "sha256-KS2tGXUk350lyflNd1Nr1euX91loMR4i8w9ZLbNBqyM=";
     };
 
     nativeBuildInputs = with python3Packages; [
@@ -88,14 +88,14 @@ in
         --replace "./train_network.py" "$out/lib/train_network.py"
 
       substituteInPlace finetune_gui.py \
-        --replace "'./docs/Finetuning/top_level.md'" "'$out/lib/docs/Finetuning/top_level.md'" \
-        --replace "'./style.css'" "'$out/lib/style.css'" \
+        --replace "./docs/Finetuning/top_level.md" "$out/lib/docs/Finetuning/top_level.md" \
+        --replace "./style.css" "$out/lib/style.css" \
         --replace "./presets/finetune" "$out/lib/presets/finetune" \
         --replace "./sdxl_train.py" "$out/lib/sdxl_train.py" \
         --replace "./fine_tune.py" "$out/lib/fine_tune.py"
 
       substituteInPlace textual_inversion_gui.py \
-        --replace "'./style.css'" "'$out/lib/style.css'" \
+        --replace "./style.css" "$out/lib/style.css" \
         --replace "./sdxl_train_textual_inversion.py" "$out/lib/sdxl_train_textual_inversion.py" \
         --replace "./train_textual_inversion.py" "$out/lib/train_textual_inversion.py"
 
