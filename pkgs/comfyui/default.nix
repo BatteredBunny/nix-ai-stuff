@@ -56,6 +56,7 @@ python3Packages.buildPythonApplication rec {
 
   postInstall = ''
     cp *.py $out/lib/python3*/site-packages/
+    cp -r app $out/lib/python3*/site-packages/
     cp -r comfy $out/lib/python3*/site-packages/
     cp -r comfy_extras $out/lib/python3*/site-packages/
 
