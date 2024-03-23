@@ -7,14 +7,14 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "unstable-2024-02-22";
+  version = "unstable-2024-03-23";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
-    rev = "f81dbe26e2e363c28ad043db67b59c11bb33f446";
-    hash = "sha256-AhzUZpIDiEN/qKl9ZzBomx8iuL2KQVNkz7mLCosRnwg=";
+    rev = "a28a9dc83684624ee2167c0b92d976bb68f2c606";
+    hash = "sha256-GxCgGBT3x7HcneoikwUmmWr/CSp8bDeDGD2tgMfCPe8=";
   };
 
   propagatedBuildInputs = with python3Packages; [
@@ -29,6 +29,7 @@ python3Packages.buildPythonApplication rec {
     scipy
     tqdm
     psutil
+    kornia
 
     # nvidia deps
     torchvision
