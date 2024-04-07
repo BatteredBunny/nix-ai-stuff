@@ -7,14 +7,14 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "unstable-2024-03-23";
+  version = "unstable-2024-04-07";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
-    rev = "a28a9dc83684624ee2167c0b92d976bb68f2c606";
-    hash = "sha256-GxCgGBT3x7HcneoikwUmmWr/CSp8bDeDGD2tgMfCPe8=";
+    rev = "d644b6bcd8991357de674f72eba02d81875d7847";
+    hash = "sha256-jT81Fwjr1uz1HSywHTlDu2dvVe4Z1RvF94UFJ04iYPQ=";
   };
 
   propagatedBuildInputs = with python3Packages; [
