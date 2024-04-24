@@ -5,7 +5,8 @@ Nix flake with several AI projects focusing on nvidia/CUDA.
 - [exllamav2](https://github.com/turboderp/exllamav2) 0.0.9
 - [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.5.1
 - [lmstudio](https://lmstudio.ai/) 0.2.20
-- [ava](https://www.avapls.com/) 2024-02-05
+- [ava & ava-headless](https://www.avapls.com/) 2024-04-24
+- [ava-prebuilt](https://www.avapls.com/) 2024-04-21
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
 - [text-generation-inference](https://github.com/huggingface/text-generation-inference) 1.3.3
 - [comfyui](https://github.com/comfyanonymous/ComfyUI) unstable-2024-04-24 (patched to run without having to include web files)

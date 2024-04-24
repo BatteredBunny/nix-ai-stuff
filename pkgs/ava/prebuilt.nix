@@ -3,15 +3,14 @@
   fetchurl,
   undmg,
   lib,
-  nix-update-script,
 }:
 stdenv.mkDerivation rec {
   pname = "ava";
-  version = "2024-02-05";
+  version = "2024-04-21";
 
   src = fetchurl {
     url = "https://s3.amazonaws.com/www.avapls.com/Ava_${version}.dmg";
-    hash = "sha256-gPpl64VrKGxowU1Ytcjp/Jzy5IP7uLvlEjkTNGYof7U=";
+    hash = "sha256-f9/fQJ1bmamPsWwR0Kz99Z4CgVzOC5X0gNUnSw4VMuQ=";
   };
 
   nativeBuildInputs = [undmg];
@@ -24,13 +23,10 @@ stdenv.mkDerivation rec {
     ln -s ../Applications/Ava.app/Contents/MacOS/ava $out/bin
   '';
 
-  passthru.updateScript = nix-update-script {};
-
   meta = with lib; {
     homepage = "https://www.avapls.com/";
     description = "A GUI macos LLM program";
-    license = licenses.unfree;
+    license = licenses.mit;
     platforms = platforms.darwin;
-    mainProgram = pname;
   };
 }

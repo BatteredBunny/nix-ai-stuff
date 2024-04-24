@@ -42,11 +42,12 @@
           exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix {};
           autogptq = pkgs.callPackage ./pkgs/autogptq.nix {};
           lmstudio = pkgs.callPackage ./pkgs/lmstudio.nix {};
-          ava = pkgs.callPackage ./pkgs/ava.nix {};
+          ava-prebuilt = pkgs.callPackage ./pkgs/ava/prebuilt.nix {};
+          ava = pkgs.callPackage ./pkgs/ava {};
+          ava-headless = pkgs.callPackage ./pkgs/ava {headless = true;};
           tensor_parallel = pkgs.callPackage ./pkgs/tensor_parallel.nix {};
           text-generation-inference = pkgs.callPackage ./pkgs/text-generation-inference.nix {};
           comfyui = pkgs.callPackage ./pkgs/comfyui/default.nix {};
-
           lycoris-lora = pkgs.callPackage ./pkgs/lycoris-lora.nix {};
           open-clip-torch = pkgs.callPackage ./pkgs/open-clip-torch.nix {};
           dadaptation = pkgs.callPackage ./pkgs/dadaptation.nix {};
