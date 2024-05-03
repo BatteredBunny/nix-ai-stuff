@@ -1,5 +1,5 @@
 # nix-ai-stuff
-Nix flake with several AI projects focusing on nvidia/CUDA.
+Nix flake for several AI projects focusing on nvidia/CUDA.
 
 ## Packages
 - [exllamav2](https://github.com/turboderp/exllamav2) 0.0.9
