@@ -41,7 +41,6 @@
         packages = rec {
           exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix {};
           autogptq = pkgs.callPackage ./pkgs/autogptq.nix {};
-          lmstudio = pkgs.callPackage ./pkgs/lmstudio.nix {};
           ava-prebuilt = pkgs.callPackage ./pkgs/ava/prebuilt.nix {};
           ava = pkgs.callPackage ./pkgs/ava {};
           ava-headless = pkgs.callPackage ./pkgs/ava {headless = true;};
