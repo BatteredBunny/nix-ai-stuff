@@ -4,7 +4,6 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 ## Packages
 - [exllamav2](https://github.com/turboderp/exllamav2) 0.0.9
 - [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.5.1
-- [lmstudio](https://lmstudio.ai/) 0.2.20
 - [ava & ava-headless](https://www.avapls.com/) 2024-04-24
 - [ava-prebuilt](https://www.avapls.com/) 2024-04-21
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
