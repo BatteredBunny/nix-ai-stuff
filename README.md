@@ -9,7 +9,6 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
 - [text-generation-inference](https://github.com/huggingface/text-generation-inference) 1.3.3
 - [comfyui](https://github.com/comfyanonymous/ComfyUI) 0.0.2
-- [open-clip-torch](https://github.com/mlfoundations/open_clip) 2.23.0
 - [dadaptation](https://github.com/facebookresearch/dadaptation) 3.1
 - [prodigyopt](https://github.com/konstmish/prodigy) 1.0
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 2.0.2

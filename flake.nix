@@ -54,7 +54,7 @@
           dadaptation = pkgs.callPackage ./pkgs/dadaptation.nix { };
           prodigyopt = pkgs.callPackage ./pkgs/prodigyopt.nix { };
           kohya_ss = pkgs.callPackage ./pkgs/kohya_ss {
-            inherit dadaptation open-clip-torch prodigyopt;
+            inherit dadaptation prodigyopt;
           };
           spandrel = pkgs.callPackage ./pkgs/spandrel { };
           spandrel_extra_arches = pkgs.callPackage ./pkgs/spandrel/spandrel_extra_arches.nix { inherit spandrel; };
