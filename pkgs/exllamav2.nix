@@ -10,14 +10,14 @@ in
     inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
 
     pname = "exllamav2";
-    version = "0.0.9";
+    version = "0.1.7";
     pyproject = true;
 
     src = fetchFromGitHub {
       owner = "turboderp";
       repo = pname;
       rev = "v${version}";
-      hash = "sha256-rEKoqaDGv9HTiatseE9Q9wNmX+rV4mB2bNyC0X/3B7k=";
+      hash = "sha256-Qt8MwiNVnC4DELK108OnU1LAoccY6C1F2sXQkjURTFU=";
     };
 
     buildInputs = with pkgs; [
@@ -31,21 +31,26 @@ in
     ];
 
     propagatedBuildInputs = with python3Packages; [
-      torch
       pandas
       fastparquet
+      torch
       safetensors
       sentencepiece
       pygments
       websockets
       regex
+      numpy
+      tokenizers
+      rich
+      ninja
     ];
 
-    pythonImportsCheck = [pname];
+    pythonImportsCheck = [ "exllamav2" ];
 
     meta = with lib; {
       homepage = "https://github.com/turboderp/exllamav2";
-      description = " A fast inference library for running LLMs locally on modern consumer-class GPUs";
+      description = "A fast inference library for running LLMs locally on modern consumer-class GPUs";
+      changelog = "https://github.com/turboderp/exllamav2/releases/tag/${src.rev}";
       license = licenses.mit;
     };
   }
