@@ -1,27 +1,33 @@
-{
-  lib,
-  fetchFromGitHub,
-  python3Packages,
-  python3,
-  pkgs,
+{ lib
+, fetchFromGitHub
+, python3Packages
+, python3
+, pkgs
+, spandrel
+, spandrel_extra_arches
+,
 }:
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "unstable-2024-04-24";
+  version = "0.0.2";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
-    rev = "27d5808fc491c7174abc6f407e7dc11c6a7a1ec0";
-    hash = "sha256-RyAau8KjDc2bTZ01K+2uJAly2K0OpCTs2BfgS6iKsxM=";
+    rev = "v${version}";
+    hash = "sha256-nXV2bTRYylMz+cx7WL/rZbD6eRcizR5TX2ChS9HbQZY=";
   };
 
   propagatedBuildInputs = with python3Packages; [
     torch
     torchsde
+    torchvision
+    torchaudio
     einops
     transformers
+    tokenizers
+    sentencepiece
     safetensors
     aiohttp
     pyyaml
@@ -29,39 +35,37 @@ python3Packages.buildPythonApplication rec {
     scipy
     tqdm
     psutil
-    kornia
 
-    # nvidia deps
-    torchvision
-    torchaudio
+    # optional dependencies
+    kornia
+    spandrel
+    spandrel_extra_arches
+    soundfile
   ];
 
-  postPatch = let
-    setup = pkgs.substituteAll {
-      src = ./setup.py;
-      desc = meta.description;
-      inherit pname version;
-    };
-  in ''
-    ln -s ${setup} setup.py
+  postPatch =
+    let
+      setup = pkgs.substituteAll {
+        src = ./setup.py;
+        desc = meta.description;
+        inherit pname version;
+      };
+    in
+    ''
+      ln -s ${setup} setup.py
 
-    substituteInPlace folder_paths.py \
-      --replace "os.path.dirname(os.path.realpath(__file__))" "os.getcwd()"
+      substituteInPlace folder_paths.py \
+        --replace "os.path.dirname(os.path.realpath(__file__))" "os.getcwd()"
+    '';
 
-    substituteInPlace server.py \
-      --replace "os.path.join(os.path.dirname(" "\"$out/lib/web\"" \
-      --replace "os.path.realpath(__file__)), \"web\")" ""
-  '';
-
-  nativeBuildInputs = [python3];
+  nativeBuildInputs = [ python3 ];
 
   postInstall = ''
     cp *.py $out/lib/python3*/site-packages/
     cp -r app $out/lib/python3*/site-packages/
     cp -r comfy $out/lib/python3*/site-packages/
     cp -r comfy_extras $out/lib/python3*/site-packages/
-
-    cp -r web $out/lib
+    cp -r web $out/lib/python3*/site-packages/
   '';
 
   postFixup = ''

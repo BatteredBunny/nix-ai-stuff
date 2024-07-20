@@ -46,7 +46,7 @@
           ava-headless = pkgs.callPackage ./pkgs/ava {headless = true;};
           tensor_parallel = pkgs.callPackage ./pkgs/tensor_parallel.nix {};
           text-generation-inference = pkgs.callPackage ./pkgs/text-generation-inference.nix {};
-          comfyui = pkgs.callPackage ./pkgs/comfyui {};
+          comfyui = pkgs.callPackage ./pkgs/comfyui { inherit spandrel spandrel_extra_arches; };
           lycoris-lora = pkgs.callPackage ./pkgs/lycoris-lora.nix {};
           open-clip-torch = pkgs.callPackage ./pkgs/open-clip-torch.nix {};
           dadaptation = pkgs.callPackage ./pkgs/dadaptation.nix {};
@@ -54,6 +54,8 @@
           kohya_ss = pkgs.callPackage ./pkgs/kohya_ss {
             inherit dadaptation open-clip-torch prodigyopt;
           };
+          spandrel = pkgs.callPackage ./pkgs/spandrel {};
+          spandrel_extra_arches = pkgs.callPackage ./pkgs/spandrel/spandrel_extra_arches.nix { inherit spandrel; };
         };
       }
     );
