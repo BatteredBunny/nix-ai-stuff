@@ -1,13 +1,14 @@
-{
-  lib,
-  stdenv,
-  zig_0_12,
-  fetchFromGitHub,
-  buildNpmPackage,
-  callPackage,
-  pkgs,
-  headless ? stdenv.isLinux,
-}: let
+{ lib
+, stdenv
+, zig_0_12
+, fetchFromGitHub
+, buildNpmPackage
+, callPackage
+, pkgs
+, headless ? stdenv.isLinux
+,
+}:
+let
   src = fetchFromGitHub {
     owner = "cztomsik";
     repo = "ava";
@@ -42,45 +43,45 @@
     '';
   };
 in
-  stdenv.mkDerivation rec {
-    pname = "ava";
-    inherit src version;
+stdenv.mkDerivation rec {
+  pname = "ava";
+  inherit src version;
 
-    nativeBuildInputs = [
-      zig_0_12.hook
-    ];
+  nativeBuildInputs = [
+    zig_0_12.hook
+  ];
 
-    postPatch =
-      ''
-        ln -s ${callPackage ./deps.nix {}} $ZIG_GLOBAL_CACHE_DIR/p
-      ''
-      + lib.optionals headless ''
-        mkdir -p zig-out/app
-        ln -s ${web} zig-out/app/main.js
-      '';
+  postPatch =
+    ''
+      ln -s ${callPackage ./deps.nix {}} $ZIG_GLOBAL_CACHE_DIR/p
+    ''
+    + lib.optionals headless ''
+      mkdir -p zig-out/app
+      ln -s ${web} zig-out/app/main.js
+    '';
 
-    zigBuildFlags =
-      [
-        "-Dtarget=${stdenv.buildPlatform.qemuArch}-${
+  zigBuildFlags =
+    [
+      "-Dtarget=${stdenv.buildPlatform.qemuArch}-${
           if stdenv.isLinux
           then "linux"
           else "macos"
         }"
-      ]
-      ++ lib.optionals headless [
-        "-Dheadless=true"
-      ];
+    ]
+    ++ lib.optionals headless [
+      "-Dheadless=true"
+    ];
 
-    installPhase = ''
-      mkdir -p $out/bin
-      cp zig-out/bin/ava_${stdenv.buildPlatform.qemuArch} $out/bin/ava
-    '';
+  installPhase = ''
+    mkdir -p $out/bin
+    cp zig-out/bin/ava_${stdenv.buildPlatform.qemuArch} $out/bin/ava
+  '';
 
-    meta = with lib; {
-      homepage = "https://www.avapls.com/";
-      description = "A GUI macos LLM program";
-      license = licenses.mit;
-      platforms = platforms.linux ++ platforms.darwin;
-      mainProgram = pname;
-    };
-  }
+  meta = with lib; {
+    homepage = "https://www.avapls.com/";
+    description = "A GUI macos LLM program";
+    license = licenses.mit;
+    platforms = platforms.linux ++ platforms.darwin;
+    mainProgram = pname;
+  };
+}

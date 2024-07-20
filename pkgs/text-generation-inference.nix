@@ -1,13 +1,13 @@
-{
-  lib,
-  rustPlatform,
-  pkg-config,
-  protobuf,
-  oniguruma,
-  openssl,
-  stdenv,
-  darwin,
-  fetchFromGitHub,
+{ lib
+, rustPlatform
+, pkg-config
+, protobuf
+, oniguruma
+, openssl
+, stdenv
+, darwin
+, fetchFromGitHub
+,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "text-generation-inference";

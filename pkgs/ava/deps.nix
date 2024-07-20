@@ -1,6 +1,6 @@
-{
-  linkFarm,
-  fetchzip,
+{ linkFarm
+, fetchzip
+,
 }:
 linkFarm "zig-packages" [
   {

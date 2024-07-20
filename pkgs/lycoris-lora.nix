@@ -1,8 +1,8 @@
-{
-  lib,
-  fetchPypi,
-  python3Packages,
-  diffusers ? python3Packages.diffusers,
+{ lib
+, fetchPypi
+, python3Packages
+, diffusers ? python3Packages.diffusers
+,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "lycoris-lora";

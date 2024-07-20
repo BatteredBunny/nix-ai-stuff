@@ -1,7 +1,7 @@
-{
-  lib,
-  python3Packages,
-  fetchPypi,
+{ lib
+, python3Packages
+, fetchPypi
+,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "tensor_parallel";
@@ -37,7 +37,7 @@ python3Packages.buildPythonPackage rec {
     ];
   };
 
-  pythonImportsCheck = ["tensor_parallel"];
+  pythonImportsCheck = [ "tensor_parallel" ];
 
   meta = with lib; {
     description = "Automatically shard your large model between multiple GPUs, works without torch.distributed";

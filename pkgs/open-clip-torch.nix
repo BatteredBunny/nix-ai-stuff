@@ -1,7 +1,7 @@
-{
-  lib,
-  python3Packages,
-  fetchFromGitHub,
+{ lib
+, python3Packages
+, fetchFromGitHub
+,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "open-clip";
@@ -32,7 +32,7 @@ python3Packages.buildPythonPackage rec {
     tqdm
   ];
 
-  pythonImportsCheck = ["open_clip"];
+  pythonImportsCheck = [ "open_clip" ];
 
   meta = with lib; {
     description = "An open source implementation of CLIP";

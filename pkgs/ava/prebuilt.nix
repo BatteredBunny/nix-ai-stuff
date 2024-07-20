@@ -1,8 +1,8 @@
-{
-  stdenv,
-  fetchurl,
-  undmg,
-  lib,
+{ stdenv
+, fetchurl
+, undmg
+, lib
+,
 }:
 stdenv.mkDerivation rec {
   pname = "ava";
@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-f9/fQJ1bmamPsWwR0Kz99Z4CgVzOC5X0gNUnSw4VMuQ=";
   };
 
-  nativeBuildInputs = [undmg];
+  nativeBuildInputs = [ undmg ];
 
   sourceRoot = "Ava.app";
 

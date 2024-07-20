@@ -29,7 +29,7 @@ python3Packages.buildPythonPackage rec {
     einops
     typing-extensions
   ];
-  
+
   pythonImportsCheck = [ "spandrel_extra_arches" ];
 
   meta = with lib; {

@@ -1,9 +1,9 @@
-{
-  symlinkJoin,
-  cudaPackages,
-  pkgs,
-  cudaCapabilities ? pkgs.cudaPackages.cudaFlags.cudaCapabilities,
-  lib,
+{ symlinkJoin
+, cudaPackages
+, pkgs
+, cudaCapabilities ? pkgs.cudaPackages.cudaFlags.cudaCapabilities
+, lib
+,
 }: {
   BUILD_CUDA_EXT = "1";
 

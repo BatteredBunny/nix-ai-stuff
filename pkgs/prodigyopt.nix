@@ -1,7 +1,7 @@
-{
-  lib,
-  python3Packages,
-  fetchPypi,
+{ lib
+, python3Packages
+, fetchPypi
+,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "prodigyopt";
@@ -22,7 +22,7 @@ python3Packages.buildPythonPackage rec {
     torch
   ];
 
-  pythonImportsCheck = [pname];
+  pythonImportsCheck = [ pname ];
 
   meta = with lib; {
     description = "An Adam-like optimizer for neural networks with adaptive estimation of learning rate";
