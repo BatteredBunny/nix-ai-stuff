@@ -25,6 +25,8 @@
             cudaSupport = true;
           };
         };
+
+        spandrelCommon = pkgs.callPackage ./pkgs/spandrel { };
       in
       rec {
         overlay = final: prev: packages;
@@ -56,8 +58,8 @@
           kohya_ss = pkgs.callPackage ./pkgs/kohya_ss {
             inherit dadaptation prodigyopt;
           };
-          spandrel = pkgs.callPackage ./pkgs/spandrel { };
-          spandrel_extra_arches = pkgs.callPackage ./pkgs/spandrel/spandrel_extra_arches.nix { inherit spandrel; };
+          spandrel = spandrelCommon.spandrel;
+          spandrel_extra_arches = spandrelCommon.spandrel_extra_arches;
           rouge = pkgs.callPackage ./pkgs/rouge.nix { };
         };
       }

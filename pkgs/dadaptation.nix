@@ -13,16 +13,15 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-qkFZyZ8xtBA6Uwz556G3dpEuYcMX/2hLJxdR1NGDLfc=";
   };
 
-  nativeBuildInputs = with python3Packages; [
+  build-system = with python3Packages; [
     setuptools
-    wheel
   ];
 
-  propagatedBuildInputs = with python3Packages; [
+  dependencies = with python3Packages; [
     torch
   ];
 
-  pythonImportsCheck = [ pname ];
+  pythonImportsCheck = [ "dadaptation" ];
 
   meta = with lib; {
     description = "Learning Rate Free Learning for Adam, SGD and AdaGrad";

@@ -13,14 +13,13 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-Wcb9iUvtxYZSyHPeSvJdAkvyhAGv8yTVAVHorIVZnTc=";
   };
 
-  nativeBuildInputs = with python3Packages; [
+  build-system = with python3Packages; [
     setuptools
-    wheel
   ];
 
-  propagatedBuildInputs = [
-    python3Packages.torch
-    python3Packages.transformers
+  dependencies = with python3Packages; [
+    torch
+    transformers
   ];
 
   passthru.optional-dependencies = {
@@ -42,6 +41,7 @@ python3Packages.buildPythonPackage rec {
   meta = with lib; {
     description = "Automatically shard your large model between multiple GPUs, works without torch.distributed";
     homepage = "https://github.com/BlackSamorez/tensor_parallel";
+    changelog = "https://github.com/BlackSamorez/tensor_parallel/releases/tag/${src.rev}";
     license = licenses.mit;
   };
 }

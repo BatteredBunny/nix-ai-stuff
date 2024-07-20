@@ -13,16 +13,15 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-zbvZnoNvpuuQr6SfXrGndg1jShWXbnfj6BFDSavpEKw=";
   };
 
-  nativeBuildInputs = with python3Packages; [
+  build-system = with python3Packages; [
     setuptools
-    wheel
   ];
 
-  propagatedBuildInputs = with python3Packages; [
+  dependencies = with python3Packages; [
     torch
   ];
 
-  pythonImportsCheck = [ pname ];
+  pythonImportsCheck = [ "prodigyopt" ];
 
   meta = with lib; {
     description = "An Adam-like optimizer for neural networks with adaptive estimation of learning rate";

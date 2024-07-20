@@ -31,7 +31,7 @@ python3Packages.buildPythonPackage rec {
     ninja
   ];
 
-  propagatedBuildInputs = with python3Packages; [
+  dependencies = with python3Packages; [
     pandas
     fastparquet
     torch

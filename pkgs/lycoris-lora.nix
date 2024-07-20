@@ -15,19 +15,20 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-fkR0JPDJJK2sxn9QiYUjqzymQvi/kiqpcG+7rez8+4M=";
   };
 
-  nativeBuildInputs = with python3Packages; [
+  build-system = with python3Packages; [
     setuptools
-    wheel
   ];
 
-  propagatedBuildInputs = with python3Packages; [
+  dependencies = with python3Packages; [
+    toml
+    einops
     diffusers
     safetensors
     torch
     transformers
   ];
 
-  # pythonImportsCheck = ["lycoris-lora"];
+  pythonImportsCheck = [ "lycoris" ];
 
   meta = with lib; {
     description = "Lora beYond Conventional methods, Other Rank adaptation Implementations for Stable diffusion";

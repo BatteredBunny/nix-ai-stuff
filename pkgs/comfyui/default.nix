@@ -19,7 +19,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-nXV2bTRYylMz+cx7WL/rZbD6eRcizR5TX2ChS9HbQZY=";
   };
 
-  propagatedBuildInputs = with python3Packages; [
+  dependencies = with python3Packages; [
     torch
     torchsde
     torchvision
