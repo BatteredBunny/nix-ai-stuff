@@ -2,6 +2,7 @@
 , fetchFromGitHub
 , pkgs
 , lib
+, rouge
 ,
 }:
 let
@@ -11,7 +12,7 @@ python3Packages.buildPythonPackage rec {
   inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
 
   pname = "auto_gptq";
-  version = "0.5.1";
+  version = "0.7.1";
   pyproject = true;
 
   src = fetchFromGitHub {
@@ -31,22 +32,26 @@ python3Packages.buildPythonPackage rec {
     ninja
   ];
 
-  propagatedBuildInputs = with python3Packages; [
-    torch
-    pandas
-    packaging
+  dependencies = with python3Packages; [
     accelerate
-    transformers
     datasets
-    peft
+    sentencepiece
+    numpy
+    rouge
     gekko
+    torch
+    safetensors
+    transformers
+    peft
+    tqdm
   ];
 
-  pythonImportsCheck = [ pname ];
+  pythonImportsCheck = [ "auto_gptq" ];
 
   meta = with lib; {
     homepage = "https://github.com/PanQiWei/AutoGPTQ";
     description = "An easy-to-use LLMs quantization package";
+    changelog = "https://github.com/AutoGPTQ/AutoGPTQ/releases/tag/${src.rev}";
     license = licenses.mit;
   };
 }

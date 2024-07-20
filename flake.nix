@@ -42,7 +42,7 @@
 
         packages = rec {
           exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix { };
-          autogptq = pkgs.callPackage ./pkgs/autogptq.nix { };
+          autogptq = pkgs.callPackage ./pkgs/autogptq.nix { inherit rouge; };
           ava-prebuilt = pkgs.callPackage ./pkgs/ava/prebuilt.nix { };
           ava = pkgs.callPackage ./pkgs/ava { };
           ava-headless = pkgs.callPackage ./pkgs/ava { headless = true; };
@@ -58,6 +58,7 @@
           };
           spandrel = pkgs.callPackage ./pkgs/spandrel { };
           spandrel_extra_arches = pkgs.callPackage ./pkgs/spandrel/spandrel_extra_arches.nix { inherit spandrel; };
+          rouge = pkgs.callPackage ./pkgs/rouge.nix { };
         };
       }
     );
