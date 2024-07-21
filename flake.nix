@@ -61,6 +61,7 @@
           spandrel = spandrelCommon.spandrel;
           spandrel_extra_arches = spandrelCommon.spandrel_extra_arches;
           rouge = pkgs.callPackage ./pkgs/rouge.nix { };
+          flash-attention = pkgs.callPackage ./pkgs/flash-attention.nix { };
         };
       }
     );
