@@ -14,4 +14,4 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 2.0.2
 - [kohya_ss](https://github.com/bmaltais/kohya_ss) 22.6.1 (patched to run without having to include web files)
 - [spandrel, spandrel_extra_arches](https://github.com/chaiNNer-org/spandrel) 0.3.4
-i [flash-attention](https://github.com/Dao-AILab/flash-attention) 2.6.1
+- [flash-attention](https://github.com/Dao-AILab/flash-attention) 2.6.1
