@@ -9,14 +9,14 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "0.0.8";
+  version = "0.1.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
     rev = "v${version}";
-    hash = "sha256-QUf15Z2hiQo5T4SvsEhRF0mpuv0lb2VqLJTRGSmFrgU=";
+    hash = "sha256-cHAcKef2XbHIVEVX62VKBTOsRNdACBMowGtQB0XHylM=";
   };
 
   dependencies = with python3Packages; [
