@@ -25,7 +25,7 @@ python3Packages.buildPythonPackage rec {
   pythonImportsCheck = [ "rouge" ];
 
   meta = with lib; {
-    description = "Full Python ROUGE Score Implementation (not a wrapper";
+    description = "Full Python ROUGE Score Implementation";
     homepage = "https://pypi.org/project/rouge/";
     license = licenses.asl20;
     maintainers = with maintainers; [ ];

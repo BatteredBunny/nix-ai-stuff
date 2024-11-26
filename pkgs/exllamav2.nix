@@ -11,14 +11,14 @@ python3Packages.buildPythonPackage rec {
   inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
 
   pname = "exllamav2";
-  version = "0.1.8";
+  version = "0.2.4";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "turboderp";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-w5LDZi/HyWodqlV3ZUabR5cEBzQMaSmHY5rVVQeMXCs=";
+    hash = "sha256-lAdu062TkQP7tFDkPLnCyjL4Vk4JG7X31Ud03Q1Jqh4=";
   };
 
   buildInputs = with pkgs; [
@@ -44,6 +44,7 @@ python3Packages.buildPythonPackage rec {
     tokenizers
     rich
     ninja
+    pillow
   ];
 
   pythonImportsCheck = [ "exllamav2" ];
