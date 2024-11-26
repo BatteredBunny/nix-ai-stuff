@@ -19,7 +19,7 @@ python3Packages.buildPythonPackage rec {
     owner = "PanQiWei";
     repo = "AutoGPTQ";
     rev = "v${version}";
-    hash = "sha256-qdpZ5FLAvTwzj2okrqqt43BzjjQ3+Cg6BX+IZkHpgGo=";
+    hash = "sha256-CkTWoLY1PLPHKTquwdpxN6L5jGTokK5BFV2owwoTlQ0=";
   };
 
   buildInputs = with pkgs; [
