@@ -1,5 +1,22 @@
 #!/bin/sh
-packages=("comfyui" "exllamav2" "autogptq" "tensor_parallel" "text-generation-inference" "lycoris-lora" "open-clip-torch" "dadaptation" "prodigyopt" "kohya_ss")
+packages=(
+  "exllamav2"
+  "autogptq"
+  "ava"
+  "ava-headless"
+  "ava-prebuilt"
+  "tensor_parallel"
+  "text-generation-inference"
+  "comfyui"
+  "dadaptation"
+  "prodigyopt"
+  "lycoris-lora"
+  "kohya_ss"
+  "spandrel"
+  "spandrel_extra_arches"
+  "flash-attention"
+  "rouge"
+)
 
 for package in ${packages[*]}; do
   echo "nix build .#$package"
