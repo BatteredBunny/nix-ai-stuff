@@ -46,7 +46,7 @@ python3Packages.buildPythonPackage rec {
     which
   ];
 
-  propagatedBuildInputs = with python3Packages; [
+  dependencies = with python3Packages; [
     numpy
     torch
   ];

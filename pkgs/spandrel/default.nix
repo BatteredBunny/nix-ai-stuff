@@ -1,11 +1,11 @@
 { fetchFromGitHub, pkgs, lib }: rec {
-  version = "0.3.4";
+  version = "0.4.0";
   github = fetchFromGitHub
     {
       owner = "chaiNNer-org";
       repo = "spandrel";
       rev = "v${version}";
-      hash = "sha256-cwY8gFcaHkyYI0y31WK76FKeq0jhYdbArHhh8Q6c3DE=";
+      hash = "sha256-BiC4gmRsNkRAUonKHV7U/hvOP00pIPtm40ydmSlNDCI=";
     };
   meta = with lib; {
     description = "Spandrel gives your project support for various PyTorch architectures meant for AI Super-Resolution, restoration, and inpainting. Based on the model support implemented in chaiNNer";
