@@ -4,6 +4,7 @@
 , protobuf
 , oniguruma
 , openssl
+, python3
 , stdenv
 , darwin
 , fetchFromGitHub
@@ -11,20 +12,21 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "text-generation-inference";
-  version = "1.3.3";
+  version = "2.4.1";
 
   src = fetchFromGitHub {
     owner = "huggingface";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-BKUtBp+U0IYlaFfSTF04+NktfbtymDh1ppPFHp8TqX4=";
+    hash = "sha256-+TX1q1CAhTDIoiJAvauAvDE3uywX4yzdyGBTmacghfc=";
   };
 
-  cargoHash = "sha256-y4NOyrWd14NnXr1PUpEn5XGrhJuLfP8WTnB64m0eP1g=";
+  cargoHash = "sha256-aXFtGEiN71Ly4qJywzpcrW634RB6bYwfI1bTivC6gt0=";
 
   nativeBuildInputs = [
     pkg-config
     protobuf
+    python3
   ];
 
   buildInputs =

@@ -10,7 +10,7 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [ava & ava-headless](https://www.avapls.com/) 2024-04-24
 - [ava-prebuilt](https://www.avapls.com/) 2024-04-21
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
-- [text-generation-inference](https://github.com/huggingface/text-generation-inference) 1.3.3
+- [text-generation-inference](https://github.com/huggingface/text-generation-inference) 2.4.1
 - [comfyui](https://github.com/comfyanonymous/ComfyUI) 0.3.5
 - [dadaptation](https://github.com/facebookresearch/dadaptation) 3.1
 - [prodigyopt](https://github.com/konstmish/prodigy) 1.0
