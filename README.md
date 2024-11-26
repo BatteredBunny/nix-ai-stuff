@@ -1,3 +1,6 @@
+> [!NOTE]
+> Most packages dont have binary cache, and building anything CUDA is very painful and slow.
+
 # nix-ai-stuff
 Nix flake for several AI projects focusing on nvidia/CUDA.
 
