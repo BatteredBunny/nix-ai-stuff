@@ -18,3 +18,4 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [kohya_ss](https://github.com/bmaltais/kohya_ss) 22.6.1 (patched to run without having to include web files)
 - [spandrel, spandrel_extra_arches](https://github.com/chaiNNer-org/spandrel) 0.4.0
 - [flash-attention](https://github.com/Dao-AILab/flash-attention) 2.6.1
+- [rouge](https://github.com/pltrdy/rouge) 1.0.1
