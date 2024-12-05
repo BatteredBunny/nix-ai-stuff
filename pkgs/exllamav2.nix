@@ -16,7 +16,7 @@ python3Packages.buildPythonPackage rec {
 
   src = fetchFromGitHub {
     owner = "turboderp";
-    repo = pname;
+    repo = "exllamav2";
     rev = "v${version}";
     hash = "sha256-Nv0jzQshL15wXc6FF1Z/y2NX3xLjKrESyyp9MRdEDxo=";
   };
