@@ -34,7 +34,6 @@ setup(
         "comfy_extras",
         "comfy_extras.chainner_models",
         "comfy_execution",
-        "model_filemanager",
         "api_server",
         "api_server.routes",
         "api_server.routes.internal",

@@ -9,14 +9,14 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "0.3.5";
+  version = "0.3.7";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
     rev = "v${version}";
-    hash = "sha256-JPvBh+q2oG0FFHfbPjC1qUUcHOXLV9Xj4a1lT4EF078=";
+    hash = "sha256-Ce/p4i+VbaLdet/Gblqs66nwypMdAxym+DHH4arek3c=";
   };
 
   dependencies = with python3Packages; [
@@ -55,7 +55,7 @@ python3Packages.buildPythonApplication rec {
       ln -s ${setup} setup.py
 
       substituteInPlace folder_paths.py \
-        --replace "os.path.dirname(os.path.realpath(__file__))" "os.getcwd()"
+        --replace-fail "os.path.dirname(os.path.realpath(__file__))" "os.getcwd()"
     '';
 
   nativeBuildInputs = [ python3 ];
