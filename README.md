@@ -6,7 +6,7 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 
 ## Packages
 - [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2024-12-04
-- [exllamav2](https://github.com/turboderp/exllamav2) 0.2.5
+- [exllamav2](https://github.com/turboderp/exllamav2) 0.2.6
 - [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.7.1
 - [ava & ava-headless](https://www.avapls.com/) 2024-04-24
 - [ava-prebuilt](https://www.avapls.com/) 2024-04-21

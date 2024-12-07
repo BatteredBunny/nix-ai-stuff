@@ -11,14 +11,14 @@ python3Packages.buildPythonPackage rec {
   inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
 
   pname = "exllamav2";
-  version = "0.2.5";
+  version = "0.2.6";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "turboderp";
     repo = "exllamav2";
     rev = "v${version}";
-    hash = "sha256-Nv0jzQshL15wXc6FF1Z/y2NX3xLjKrESyyp9MRdEDxo=";
+    hash = "sha256-6BHIXCWthbhWETYzfbaBNdp4Ox33ruLI/98tuJkPUHc=";
   };
 
   buildInputs = with pkgs; [
