@@ -20,3 +20,10 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [spandrel, spandrel_extra_arches](https://github.com/chaiNNer-org/spandrel) 0.4.0
 - [flash-attention](https://github.com/Dao-AILab/flash-attention) 2.6.1
 - [rouge](https://github.com/pltrdy/rouge) 1.0.1
+
+```
+nix run github:BatteredBunny/nix-ai-stuff#tabbyapi
+```
+
+# Similar projects
+- [nixifed-ai](https://github.com/nixified-ai/flake)
