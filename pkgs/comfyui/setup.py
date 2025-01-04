@@ -24,6 +24,8 @@ setup(
         "comfy.ldm.hydit",
         "comfy.ldm.lightricks",
         "comfy.ldm.lightricks.vae",
+        "comfy.ldm.hunyuan_video",
+        "comfy.ldm.pixart",
         "comfy.ldm.models",
         "comfy.ldm.modules",
         "comfy.ldm.modules.diffusionmodules",
