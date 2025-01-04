@@ -4,11 +4,19 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  nixConfig.extra-substituters = [
-    "https://nix-ai-stuff.cachix.org"
-    "https://cuda-maintainers.cachix.org"
-    "https://ai.cachix.org"
-  ];
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-ai-stuff.cachix.org"
+      "https://nix-community.cachix.org"
+      "https://ai.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "nix-ai-stuff.cachix.org-1:WlUGeVCs26w9xF0/rjyg32PujDqbVMlSHufpj1fqix8="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
+    ];
+  };
 
   outputs =
     { nixpkgs
