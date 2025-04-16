@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   nixConfig = {
@@ -19,59 +18,72 @@
   };
 
   outputs =
-    { nixpkgs
-    , flake-utils
+    { self
+    , nixpkgs
     , ...
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
-            cudaSupport = true;
+    let
+      inherit (nixpkgs) lib;
+
+      systems = lib.systems.flakeExposed;
+
+      forAllSystems = lib.genAttrs systems;
+
+      nixpkgsFor = forAllSystems (system: import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          cudaSupport = true;
+        };
+      });
+    in
+    {
+      devShells = forAllSystems (system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs;
+              [
+                python3
+                cudatoolkit
+              ];
+
+            shellHook = ''
+              export CUDA_PATH=${pkgs.cudatoolkit}
+            '';
           };
-        };
+        });
 
-        spandrelCommon = pkgs.callPackage ./pkgs/spandrel { };
-      in
-      rec {
-        overlay = final: prev: packages;
-
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            python3
-            cudatoolkit
-          ];
-
-          shellHook = ''
-            export CUDA_PATH=${pkgs.cudatoolkit}
-          '';
-        };
-
-        packages = rec {
-          exllamav2 = pkgs.callPackage ./pkgs/exllamav2.nix { };
-          autogptq = pkgs.callPackage ./pkgs/autogptq.nix { inherit rouge; };
-          ava-prebuilt = pkgs.callPackage ./pkgs/ava/prebuilt.nix { };
-          ava = pkgs.callPackage ./pkgs/ava { };
-          ava-headless = pkgs.callPackage ./pkgs/ava { headless = true; };
-          tensor_parallel = pkgs.callPackage ./pkgs/tensor_parallel.nix { };
-          text-generation-inference = pkgs.callPackage ./pkgs/text-generation-inference.nix { };
-          comfyui = pkgs.callPackage ./pkgs/comfyui { inherit spandrel spandrel_extra_arches; };
-          lycoris-lora = pkgs.callPackage ./pkgs/lycoris-lora.nix { };
-          open-clip-torch = pkgs.callPackage ./pkgs/open-clip-torch.nix { };
-          dadaptation = pkgs.callPackage ./pkgs/dadaptation.nix { };
-          prodigyopt = pkgs.callPackage ./pkgs/prodigyopt.nix { };
-          kohya_ss = pkgs.callPackage ./pkgs/kohya_ss {
+      overlays.default = final: prev:
+        rec {
+          exllamav2 = final.callPackage ./pkgs/exllamav2.nix { };
+          autogptq = final.callPackage ./pkgs/autogptq.nix { inherit rouge; };
+          ava-prebuilt = final.callPackage ./pkgs/ava/prebuilt.nix { };
+          ava = final.callPackage ./pkgs/ava { };
+          ava-headless = final.callPackage ./pkgs/ava { headless = true; };
+          tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };
+          lycoris-lora = final.callPackage ./pkgs/lycoris-lora.nix { };
+          open-clip-torch = final.callPackage ./pkgs/open-clip-torch.nix { };
+          dadaptation = final.callPackage ./pkgs/dadaptation.nix { };
+          prodigyopt = final.callPackage ./pkgs/prodigyopt.nix { };
+          kohya_ss = final.callPackage ./pkgs/kohya_ss {
             inherit dadaptation prodigyopt;
           };
-          spandrel = spandrelCommon.spandrel;
-          spandrel_extra_arches = spandrelCommon.spandrel_extra_arches;
-          rouge = pkgs.callPackage ./pkgs/rouge.nix { };
-          flash-attention = pkgs.callPackage ./pkgs/flash-attention.nix { };
-          tabbyapi = pkgs.callPackage ./pkgs/tabbyapi.nix { exllamav2 = exllamav2; };
+          rouge = final.callPackage ./pkgs/rouge.nix { };
+          flash-attention = final.callPackage ./pkgs/flash-attention.nix { };
+          kbnf = final.callPackage ./pkgs/kbnf.nix { };
+          general-sam = final.callPackage ./pkgs/general-sam.nix { };
+          formatron = final.callPackage ./pkgs/formatron.nix { kbnf = kbnf; general-sam = general-sam; exllamav2 = exllamav2; };
+          tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { kbnf = kbnf; formatron = formatron; exllamav2 = exllamav2; };
         };
-      }
-    );
+
+      packages = forAllSystems (system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        lib.makeScope pkgs.newScope (final: self.overlays.default final pkgs)
+      );
+    };
 }

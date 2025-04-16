@@ -5,31 +5,43 @@
 ,
 }:
 let
-  nvidia = pkgs.callPackage ../nvidia.nix { };
+  inherit (python3Packages.torch) cudaCapabilities cudaPackages cudaSupport;
+  inherit (cudaPackages) backendStdenv;
 in
 python3Packages.buildPythonPackage rec {
-  inherit (nvidia) BUILD_CUDA_EXT CUDA_HOME CUDA_VERSION preBuild;
-
   pname = "exllamav2";
-  version = "0.2.6";
+  version = "0.2.8";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "turboderp";
     repo = "exllamav2";
     rev = "v${version}";
-    hash = "sha256-6BHIXCWthbhWETYzfbaBNdp4Ox33ruLI/98tuJkPUHc=";
+    hash = "sha256-VvREhl1X43c7OgLO1fsLIULD+ogtrIEiHKbb3QSZhb0=";
   };
+
+  preConfigure = ''
+      export CC=${lib.getExe' backendStdenv.cc "cc"}
+      export CXX=${lib.getExe' backendStdenv.cc "c++"}
+      export TORCH_CUDA_ARCH_LIST="${lib.concatStringsSep ";" cudaCapabilities}"
+      export FORCE_CUDA=1
+    '';
 
   buildInputs = with pkgs; [
     python3Packages.pybind11
     cudatoolkit
   ];
 
+  env.CUDA_HOME = lib.optionalString cudaSupport (lib.getDev cudaPackages.cuda_nvcc);
+
   nativeBuildInputs = with pkgs; [
     which
     ninja
   ];
+
+  postPatch = ''
+    substituteInPlace requirements.txt --replace-fail "numpy~=1.26.4" "numpy"
+  '';
 
   dependencies = with python3Packages; [
     pandas
