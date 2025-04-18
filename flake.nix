@@ -58,7 +58,7 @@
 
       overlays.default = final: prev:
         rec {
-          exllamav2 = final.callPackage ./pkgs/exllamav2.nix { };
+          exllamav2 = final.callPackage ./pkgs/exllamav2.nix { inherit flash-attn; };
           autogptq = final.callPackage ./pkgs/autogptq.nix { inherit rouge; };
           ava-prebuilt = final.callPackage ./pkgs/ava/prebuilt.nix { };
           ava = final.callPackage ./pkgs/ava { };
@@ -72,7 +72,7 @@
             inherit dadaptation prodigyopt;
           };
           rouge = final.callPackage ./pkgs/rouge.nix { };
-          flash-attention = final.callPackage ./pkgs/flash-attention.nix { };
+          flash-attn = final.callPackage ./pkgs/flash-attention.nix { };
           kbnf = final.callPackage ./pkgs/kbnf.nix { };
           general-sam = final.callPackage ./pkgs/general-sam.nix { };
           formatron = final.callPackage ./pkgs/formatron.nix { kbnf = kbnf; general-sam = general-sam; exllamav2 = exllamav2; };

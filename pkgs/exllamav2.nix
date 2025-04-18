@@ -1,5 +1,6 @@
 { python3Packages
 , fetchFromGitHub
+, flash-attn
 , pkgs
 , lib
 ,
@@ -21,11 +22,11 @@ python3Packages.buildPythonPackage rec {
   };
 
   preConfigure = ''
-      export CC=${lib.getExe' backendStdenv.cc "cc"}
-      export CXX=${lib.getExe' backendStdenv.cc "c++"}
-      export TORCH_CUDA_ARCH_LIST="${lib.concatStringsSep ";" cudaCapabilities}"
-      export FORCE_CUDA=1
-    '';
+    export CC=${lib.getExe' backendStdenv.cc "cc"}
+    export CXX=${lib.getExe' backendStdenv.cc "c++"}
+    export TORCH_CUDA_ARCH_LIST="${lib.concatStringsSep ";" cudaCapabilities}"
+    export FORCE_CUDA=1
+  '';
 
   buildInputs = with pkgs; [
     python3Packages.pybind11
@@ -44,6 +45,7 @@ python3Packages.buildPythonPackage rec {
   '';
 
   dependencies = with python3Packages; [
+    flash-attn
     pandas
     fastparquet
     torch

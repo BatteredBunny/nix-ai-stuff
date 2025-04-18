@@ -1,5 +1,5 @@
 > [!NOTE]
-> Most packages dont have binary cache, and building anything CUDA is very painful and slow.
+> Please note that most of the packages may not have binary cache, and building anything CUDA is very painful and slow.
 
 # nix-ai-stuff
 Nix flake for several AI projects focusing on nvidia/CUDA.
@@ -18,7 +18,7 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [prodigyopt](https://github.com/konstmish/prodigy) 1.0
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 2.0.2
 - [kohya_ss](https://github.com/bmaltais/kohya_ss) 22.6.1 (patched to run without having to include web files)
-- [flash-attention](https://github.com/Dao-AILab/flash-attention) 2.6.1
+- [flash-attn](https://github.com/Dao-AILab/flash-attention) 2.7.4
 - [rouge](https://github.com/pltrdy/rouge) 1.0.1
 
 ```
