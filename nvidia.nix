@@ -1,7 +1,7 @@
 { symlinkJoin
 , cudaPackages
 , pkgs
-, cudaCapabilities ? pkgs.cudaPackages.cudaFlags.cudaCapabilities
+, cudaCapabilities ? pkgs.cudaPackages.flags.cudaCapabilities
 , lib
 ,
 }: {
@@ -15,7 +15,7 @@
     ];
   };
 
-  CUDA_VERSION = cudaPackages.cudaVersion;
+  CUDA_VERSION = cudaPackages.cudaMajorMinorVersion;
 
   preBuild = ''
     export PATH=${pkgs.gcc11Stdenv.cc}/bin:$PATH

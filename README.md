@@ -8,8 +8,8 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [kbnf](https://github.com/Dan-Wanna-M/kbnf) 0.4.1
 - [general-sam](https://github.com/ModelTC/general-sam-py) 1.0.1
 - [formatron](https://github.com/Dan-wanna-M/formatron) 0.4.11
-- [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2025-04-16
-- [exllamav2](https://github.com/turboderp/exllamav2) 0.2.9
+- [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2025-07-25
+- [exllamav2](https://github.com/turboderp/exllamav2) 0.3.2
 - [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.7.1
 - [ava & ava-headless](https://www.avapls.com/) 2024-04-24
 - [ava-prebuilt](https://www.avapls.com/) 2024-04-21

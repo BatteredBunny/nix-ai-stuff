@@ -11,14 +11,14 @@ let
 in
 python3Packages.buildPythonPackage rec {
   pname = "exllamav2";
-  version = "0.2.9";
+  version = "0.3.2";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "turboderp";
     repo = "exllamav2";
     rev = "v${version}";
-    hash = "sha256-iaeo4D2I6J0/tDz1Q9kLLU6vHkdVayPhcQQAkYs/fDg=";
+    hash = "sha256-WbpbANenOuy6F0qAKVKAmolHjgRKfPxSVud8FZG1TXw=";
   };
 
   preConfigure = ''
@@ -50,7 +50,6 @@ python3Packages.buildPythonPackage rec {
     fastparquet
     torch
     safetensors
-    sentencepiece
     pygments
     websockets
     regex

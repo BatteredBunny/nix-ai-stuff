@@ -8,14 +8,14 @@
 }:
 python3Packages.buildPythonApplication {
   pname = "tabbyapi";
-  version = "unstable-2025-04-16";
+  version = "unstable-2025-07-25";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "theroyallab";
     repo = "tabbyAPI";
-    rev = "6bb5f8f599d617f94af85e0818c8a841fc0ed806";
-    hash = "sha256-Ovj/8T98pSWuLtSbfGVWf++ywSsa+PgXHiHxg6W7/m4=";
+    rev = "0b4ca567f85a77461186ebf5a8721794d69ec924";
+    hash = "sha256-P17jKzADsxfhPdWSnEsHioIQ4+TcEF0Z0a8mNH0Oiis=";
   };
 
   build-system = with python3Packages; [
@@ -52,7 +52,6 @@ python3Packages.buildPythonApplication {
 
   postPatch = ''
     substituteInPlace pyproject.toml --replace-fail 'fastapi-slim' 'fastapi'
-    substituteInPlace pyproject.toml --replace-fail "numpy < 2.0.0" "numpy"
   '';
 
   optional-dependencies = with python3Packages; {
