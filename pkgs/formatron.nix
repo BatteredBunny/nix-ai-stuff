@@ -8,14 +8,14 @@
 }:
 python3Packages.buildPythonPackage rec {
   pname = "formatron";
-  version = "0.4.11";
+  version = "0.5.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Dan-wanna-M";
     repo = "formatron";
     rev = "v${version}";
-    hash = "sha256-VXOZTSD9xNB9UaA84T1FrEN3WIYbaieSfwjf7J6P+KA=";
+    hash = "sha256-LQJza8F5wPcQO1y7Ino4slv7zoJMsZBn4LKLWYO9818=";
     fetchSubmodules = true;
   };
 

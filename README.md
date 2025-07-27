@@ -5,11 +5,12 @@
 Nix flake for several AI projects focusing on nvidia/CUDA.
 
 ## Packages
-- [kbnf](https://github.com/Dan-Wanna-M/kbnf) 0.4.1
+- [kbnf](https://github.com/Dan-Wanna-M/kbnf) 0.4.2
 - [general-sam](https://github.com/ModelTC/general-sam-py) 1.0.1
-- [formatron](https://github.com/Dan-wanna-M/formatron) 0.4.11
+- [formatron](https://github.com/Dan-wanna-M/formatron) 0.5.0
 - [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2025-07-25
 - [exllamav2](https://github.com/turboderp/exllamav2) 0.3.2
+- [exllamav3](https://github.com/turboderp/exllamav3) 0.0.5
 - [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.7.1
 - [ava & ava-headless](https://www.avapls.com/) 2024-04-24
 - [ava-prebuilt](https://www.avapls.com/) 2024-04-21
@@ -18,7 +19,7 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [prodigyopt](https://github.com/konstmish/prodigy) 1.0
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 2.0.2
 - [kohya_ss](https://github.com/bmaltais/kohya_ss) 22.6.1 (patched to run without having to include web files)
-- [flash-attn](https://github.com/Dao-AILab/flash-attention) 2.7.4
+- [flash-attn](https://github.com/Dao-AILab/flash-attention) 2.8.2
 - [rouge](https://github.com/pltrdy/rouge) 1.0.1
 
 ```

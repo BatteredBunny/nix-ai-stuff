@@ -1,6 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
 packages=(
   "exllamav2"
+  "exllamav3"
+  "tabbyapi"
+  "formatron"
+  "tabbyapi"
   "autogptq"
   "ava"
   "ava-headless"
@@ -10,7 +14,7 @@ packages=(
   "prodigyopt"
   "lycoris-lora"
   "kohya_ss"
-  "flash-attention"
+  "flash-attn"
   "rouge"
 )
 

@@ -15,7 +15,7 @@ python3Packages.buildPythonPackage rec {
   pyproject = true;
 
   src = fetchFromGitHub {
-    owner = "turboderp";
+    owner = "turboderp-org";
     repo = "exllamav2";
     rev = "v${version}";
     hash = "sha256-WbpbANenOuy6F0qAKVKAmolHjgRKfPxSVud8FZG1TXw=";

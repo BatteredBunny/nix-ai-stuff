@@ -1,6 +1,7 @@
 { lib
 , fetchFromGitHub
 , exllamav2
+, exllamav3
 , python3Packages
 , formatron
 , kbnf
@@ -25,29 +26,32 @@ python3Packages.buildPythonApplication {
   ];
 
   dependencies = with python3Packages; [
-    aiofiles
-    aiohttp
-    async-lru
     fastapi # fastapi-slim
-    httptools
-    huggingface-hub
+    pydantic
+    ruamel-yaml
+    rich
+    uvicorn
     jinja2
     loguru
-    numpy
-    packaging
-    pillow
-    psutil
-    pydantic
-    rich
-    ruamel-yaml
-    setuptools
     sse-starlette
+    packaging
     tokenizers
     formatron
     kbnf
-    uvicorn
+    aiofiles
+    aiohttp
+    async-lru
+    huggingface-hub
+    psutil
+    httptools
+    pillow
+
+    numpy
+    setuptools
+
     uvloop # linux and x86_64
     exllamav2
+    exllamav3
   ];
 
   postPatch = ''

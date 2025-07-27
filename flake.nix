@@ -59,6 +59,7 @@
       overlays.default = final: prev:
         rec {
           exllamav2 = final.callPackage ./pkgs/exllamav2.nix { inherit flash-attn; };
+          exllamav3 = final.callPackage ./pkgs/exllamav3.nix { inherit flash-attn kbnf formatron; };
           autogptq = final.callPackage ./pkgs/autogptq.nix { inherit rouge; };
           ava-prebuilt = final.callPackage ./pkgs/ava/prebuilt.nix { };
           ava = final.callPackage ./pkgs/ava { };
@@ -73,10 +74,10 @@
           };
           rouge = final.callPackage ./pkgs/rouge.nix { };
           flash-attn = final.callPackage ./pkgs/flash-attention.nix { };
-          kbnf = final.callPackage ./pkgs/kbnf.nix { };
+          kbnf = final.callPackage ./pkgs/kbnf { };
           general-sam = final.callPackage ./pkgs/general-sam.nix { };
-          formatron = final.callPackage ./pkgs/formatron.nix { kbnf = kbnf; general-sam = general-sam; exllamav2 = exllamav2; };
-          tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { kbnf = kbnf; formatron = formatron; exllamav2 = exllamav2; };
+          formatron = final.callPackage ./pkgs/formatron.nix { inherit kbnf general-sam exllamav2; };
+          tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { inherit kbnf formatron exllamav2 exllamav3; };
         };
 
       packages = forAllSystems (system:

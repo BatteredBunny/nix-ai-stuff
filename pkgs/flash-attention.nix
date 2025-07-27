@@ -13,14 +13,14 @@ in
 python3Packages.buildPythonPackage rec {
   inherit (nvidia) BUILD_CUDA_EXT CUDA_VERSION preBuild;
   pname = "flash-attn";
-  version = "2.7.4";
+  version = "2.8.2";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Dao-AILab";
     repo = "flash-attention";
     rev = "v${version}";
-    hash = "sha256-dFJplpZojvtV1wbqNY0SGPw2c8kxMOF+qFo8I9asDJs=";
+    hash = "sha256-iHxfDh+rGanhymP5F7g8rQcQUlP0oXliVF+y+ur/iJ0=";
     fetchSubmodules = true;
   };
 
@@ -62,6 +62,7 @@ python3Packages.buildPythonPackage rec {
     psutil
     ninja
     einops
+    packaging
   ];
 
   pythonImportsCheck = [ "flash_attn" ];
