@@ -63,9 +63,9 @@ python3Packages.buildPythonPackage rec {
   pythonImportsCheck = [ "exllamav2" ];
 
   meta = with lib; {
-    homepage = "https://github.com/turboderp/exllamav2";
+    homepage = "https://github.com/turboderp-org/exllamav2";
     description = "A fast inference library for running LLMs locally on modern consumer-class GPUs";
-    changelog = "https://github.com/turboderp/exllamav2/releases/tag/${src.rev}";
+    changelog = "https://github.com/turboderp-org/exllamav2/releases/tag/${src.rev}";
     license = licenses.mit;
   };
 }

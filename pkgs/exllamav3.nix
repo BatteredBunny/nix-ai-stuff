@@ -14,14 +14,14 @@ let
 in
 python3Packages.buildPythonPackage rec{
   pname = "exllamav3";
-  version = "0.0.5";
+  version = "0.0.6";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "turboderp-org";
     repo = "exllamav3";
     rev = "v${version}";
-    hash = "sha256-0dWQ+EYtV61gyuYJ3YGLOs0QMQ7sMMqq7D9tHklJ55c=";
+    hash = "sha256-+9aduBeoQOkEIw5XMQgzcWM+TAUHrHgWO1EQdoHCyhE=";
   };
 
   build-system = with python3Packages; [
