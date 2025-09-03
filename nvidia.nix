@@ -18,7 +18,7 @@
   CUDA_VERSION = cudaPackages.cudaMajorMinorVersion;
 
   preBuild = ''
-    export PATH=${pkgs.gcc12Stdenv.cc}/bin:$PATH
+    export PATH=${pkgs.gcc13Stdenv.cc}/bin:$PATH
     export TORCH_CUDA_ARCH_LIST="${lib.concatStringsSep ";" cudaCapabilities}"
   '';
 }
