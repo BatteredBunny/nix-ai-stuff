@@ -12,8 +12,6 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [exllamav2](https://github.com/turboderp-org/exllamav2) 0.3.2
 - [exllamav3](https://github.com/turboderp-org/exllamav3) 0.0.6
 - [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.7.1
-- [ava & ava-headless](https://www.avapls.com/) 2024-04-24
-- [ava-prebuilt](https://www.avapls.com/) 2024-04-21
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
 - [dadaptation](https://github.com/facebookresearch/dadaptation) 3.1
 - [prodigyopt](https://github.com/konstmish/prodigy) 1.0

@@ -61,9 +61,9 @@
           exllamav2 = final.callPackage ./pkgs/exllamav2.nix { inherit flash-attn; };
           exllamav3 = final.callPackage ./pkgs/exllamav3.nix { inherit flash-attn kbnf formatron; };
           autogptq = final.callPackage ./pkgs/autogptq.nix { inherit rouge; };
-          ava-prebuilt = final.callPackage ./pkgs/ava/prebuilt.nix { };
-          ava = final.callPackage ./pkgs/ava { };
-          ava-headless = final.callPackage ./pkgs/ava { headless = true; };
+          ava = throw "ava & ava-prebuilt removed since the package hasn't been updated in a while";
+          ava-prebuilt = ava;
+          ava-headless = ava;
           tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };
           lycoris-lora = final.callPackage ./pkgs/lycoris-lora.nix { };
           open-clip-torch = final.callPackage ./pkgs/open-clip-torch.nix { };
