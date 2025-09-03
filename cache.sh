@@ -5,12 +5,8 @@ packages=(
   "tabbyapi"
   "formatron"
   "tabbyapi"
-  "autogptq"
   "tensor_parallel"
-  "dadaptation"
-  "prodigyopt"
   "lycoris-lora"
-  "kohya_ss"
   "flash-attn"
   "rouge"
 )

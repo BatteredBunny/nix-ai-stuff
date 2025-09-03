@@ -11,12 +11,8 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 - [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2025-08-26
 - [exllamav2](https://github.com/turboderp-org/exllamav2) 0.3.2
 - [exllamav3](https://github.com/turboderp-org/exllamav3) 0.0.6
-- [autogptq](https://github.com/PanQiWei/AutoGPTQ) 0.7.1
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
-- [dadaptation](https://github.com/facebookresearch/dadaptation) 3.1
-- [prodigyopt](https://github.com/konstmish/prodigy) 1.0
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 2.0.2
-- [kohya_ss](https://github.com/bmaltais/kohya_ss) 22.6.1 (patched to run without having to include web files)
 - [flash-attn](https://github.com/Dao-AILab/flash-attention) 2.8.2
 - [rouge](https://github.com/pltrdy/rouge) 1.0.1
 

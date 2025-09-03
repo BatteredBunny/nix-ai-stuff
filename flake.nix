@@ -60,18 +60,16 @@
         rec {
           exllamav2 = final.callPackage ./pkgs/exllamav2.nix { inherit flash-attn; };
           exllamav3 = final.callPackage ./pkgs/exllamav3.nix { inherit flash-attn kbnf formatron; };
-          autogptq = final.callPackage ./pkgs/autogptq.nix { inherit rouge; };
+          autogptq = throw "autogptq removed since the repo is archived";
           ava = throw "ava & ava-prebuilt removed since the package hasn't been updated in a while";
           ava-prebuilt = ava;
           ava-headless = ava;
           tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };
           lycoris-lora = final.callPackage ./pkgs/lycoris-lora.nix { };
           open-clip-torch = final.callPackage ./pkgs/open-clip-torch.nix { };
-          dadaptation = final.callPackage ./pkgs/dadaptation.nix { };
-          prodigyopt = final.callPackage ./pkgs/prodigyopt.nix { };
-          kohya_ss = final.callPackage ./pkgs/kohya_ss {
-            inherit dadaptation prodigyopt;
-          };
+          dadaptation = kohya_ss;
+          prodigyopt = kohya_ss;
+          kohya_ss = throw "kohya_ss package is unmaintained and broken";
           rouge = final.callPackage ./pkgs/rouge.nix { };
           flash-attn = final.callPackage ./pkgs/flash-attention.nix { };
           kbnf = final.callPackage ./pkgs/kbnf { };
