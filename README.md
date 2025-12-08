@@ -1,6 +1,3 @@
-> [!NOTE]
-> Please note that some of the packages may not have binary cache, building yourself may take a long time.
-
 # nix-ai-stuff
 Nix flake for several AI projects focusing on nvidia/CUDA.
 
@@ -17,6 +14,37 @@ Nix flake for several AI projects focusing on nvidia/CUDA.
 
 ```
 nix run github:BatteredBunny/nix-ai-stuff#tabbyapi
+```
+
+## Overlay usage
+
+Optional but recommended is to use the cachix cache to not build the packages yourself.
+
+```bash
+cachix use nix-ai-stuff
+```
+
+```nix
+# flake.nix
+inputs = {
+    nix-ai-stuff.url = "github:BatteredBunny/nix-ai-stuff";
+};
+
+```nix
+# configuration.nix
+nixpkgs = {
+    overlays = [
+        inputs.nix-ai-stuff.overlays.default
+    ];
+    config = {
+        allowUnfree = true;
+        cudaSupport = true;
+    };
+};
+
+environment.systemPackages = with pkgs; [
+    tabbyapi # Api for exllama
+];
 ```
 
 # Similar projects
