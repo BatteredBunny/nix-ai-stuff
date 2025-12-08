@@ -1,6 +1,5 @@
 { lib
 , fetchFromGitHub
-, flash-attn
 , python3Packages
 , kbnf
 , formatron
@@ -14,15 +13,23 @@ let
 in
 python3Packages.buildPythonPackage rec{
   pname = "exllamav3";
-  version = "0.0.6";
+  version = "0.0.16";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "turboderp-org";
     repo = "exllamav3";
     rev = "v${version}";
-    hash = "sha256-+9aduBeoQOkEIw5XMQgzcWM+TAUHrHgWO1EQdoHCyhE=";
+    hash = "sha256-tWNBgkDXl4krUgtYcXgfv4GXPtZxlJcnIWf8nqb0u4I=";
   };
+
+  nativeBuildInputs = with pkgs.python3Packages; [
+    pythonRelaxDepsHook
+  ];
+
+  pythonRelaxDeps = [
+    "pydantic" # Wants 2.11.0 but nixpkgs has 2.11.7
+  ];
 
   build-system = with python3Packages; [
     setuptools
@@ -48,6 +55,7 @@ python3Packages.buildPythonPackage rec{
     pyyaml
     marisa-trie
     kbnf
+    pydantic
     formatron
   ];
 

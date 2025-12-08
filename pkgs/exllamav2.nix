@@ -1,6 +1,5 @@
 { python3Packages
 , fetchFromGitHub
-, flash-attn
 , pkgs
 , lib
 ,

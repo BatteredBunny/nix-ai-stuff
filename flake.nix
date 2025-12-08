@@ -7,6 +7,7 @@
     extra-substituters = [
       "https://nix-ai-stuff.cachix.org"
       "https://nix-community.cachix.org"
+      "https://cache.nixos-cuda.org"
       "https://ai.cachix.org"
     ];
 
@@ -14,6 +15,7 @@
       "nix-ai-stuff.cachix.org-1:WlUGeVCs26w9xF0/rjyg32PujDqbVMlSHufpj1fqix8="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     ];
   };
 
@@ -58,8 +60,8 @@
 
       overlays.default = final: prev:
         rec {
-          exllamav2 = final.callPackage ./pkgs/exllamav2.nix { inherit flash-attn; };
-          exllamav3 = final.callPackage ./pkgs/exllamav3.nix { inherit flash-attn kbnf formatron; };
+          exllamav2 = final.callPackage ./pkgs/exllamav2.nix { };
+          exllamav3 = final.callPackage ./pkgs/exllamav3.nix { inherit kbnf formatron; };
           autogptq = throw "autogptq removed since the repo is archived";
           ava = throw "ava & ava-prebuilt removed since the package hasn't been updated in a while";
           ava-prebuilt = ava;
@@ -71,7 +73,6 @@
           prodigyopt = kohya_ss;
           kohya_ss = throw "kohya_ss package is unmaintained and broken";
           rouge = final.callPackage ./pkgs/rouge.nix { };
-          flash-attn = final.callPackage ./pkgs/flash-attention.nix { };
           kbnf = final.callPackage ./pkgs/kbnf { };
           general-sam = final.callPackage ./pkgs/general-sam.nix { };
           formatron = final.callPackage ./pkgs/formatron.nix { inherit kbnf general-sam exllamav2; };

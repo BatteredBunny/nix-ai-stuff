@@ -9,20 +9,28 @@
 }:
 python3Packages.buildPythonApplication {
   pname = "tabbyapi";
-  version = "unstable-2025-08-26";
+  version = "unstable-2025-11-25";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "theroyallab";
     repo = "tabbyAPI";
-    rev = "1d3a3087090d8522ccc5856a7a738a8a93aa2c61";
-    hash = "sha256-OqV6uNy9xJUao6Y5z9+E/GlE8ATIGBFXr9AnQI48pJ8=";
+    rev = "8b6b793bfc4b848986d55340aed1f02e55ff9db8";
+    hash = "sha256-+CxTBO8tEXgf2kvKLdlGy2cBg1ilizsWMz72dAVA4os=";
   };
 
   build-system = with python3Packages; [
     packaging
     setuptools
     wheel
+  ];
+
+  nativeBuildInputs = with python3Packages; [
+    pythonRelaxDepsHook
+  ];
+
+  pythonRelaxDeps = [
+    "pydantic" # Wants 2.11.0 but nixpkgs has 2.11.7
   ];
 
   dependencies = with python3Packages; [
