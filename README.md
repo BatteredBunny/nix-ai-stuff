@@ -29,6 +29,7 @@ cachix use nix-ai-stuff
 inputs = {
     nix-ai-stuff.url = "github:BatteredBunny/nix-ai-stuff";
 };
+```
 
 ```nix
 # configuration.nix
