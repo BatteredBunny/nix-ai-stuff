@@ -3,8 +3,6 @@ packages=(
   "exllamav2"
   "exllamav3"
   "tabbyapi"
-  "formatron"
-  "tabbyapi"
   "tensor_parallel"
   "lycoris-lora"
   "rouge"
