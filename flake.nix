@@ -70,16 +70,17 @@
           prodigyopt = kohya_ss;
           kohya_ss = throw "kohya_ss package is unmaintained and broken";
 
+          kbnf = throw "kbnf has been upstreamed to nixpkgs";
+          general-sam = throw "general-sam has been upstreamed to nixpkgs";
+          formatron = throw "formatron has been upstreamed to nixpkgs";
+
           exllamav2 = final.callPackage ./pkgs/exllamav2.nix { };
-          exllamav3 = final.callPackage ./pkgs/exllamav3.nix { inherit kbnf formatron; };
+          exllamav3 = final.callPackage ./pkgs/exllamav3.nix { };
           tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };
           lycoris-lora = final.callPackage ./pkgs/lycoris-lora.nix { };
           open-clip-torch = final.callPackage ./pkgs/open-clip-torch.nix { };
           rouge = final.callPackage ./pkgs/rouge.nix { };
-          kbnf = final.callPackage ./pkgs/kbnf { };
-          general-sam = final.callPackage ./pkgs/general-sam.nix { };
-          formatron = final.callPackage ./pkgs/formatron.nix { inherit kbnf general-sam exllamav2; };
-          tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { inherit kbnf formatron exllamav2 exllamav3; };
+          tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { inherit exllamav2 exllamav3; };
         };
 
       packages = forAllSystems (system:

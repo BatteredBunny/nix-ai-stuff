@@ -1,8 +1,6 @@
 { lib
 , fetchFromGitHub
 , python3Packages
-, kbnf
-, formatron
 , pkgs
 , symlinkJoin
 ,

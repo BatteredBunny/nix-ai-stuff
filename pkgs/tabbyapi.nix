@@ -3,8 +3,6 @@
 , exllamav2
 , exllamav3
 , python3Packages
-, formatron
-, kbnf
 ,
 }:
 python3Packages.buildPythonApplication {
@@ -30,7 +28,7 @@ python3Packages.buildPythonApplication {
   ];
 
   pythonRelaxDeps = [
-    "pydantic" # Wants 2.11.0 but nixpkgs has 2.11.7
+    "pydantic" # Wants 2.11.0 but nixpkgs has newer version
   ];
 
   dependencies = with python3Packages; [
