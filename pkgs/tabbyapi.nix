@@ -55,9 +55,10 @@ python3Packages.buildPythonApplication {
     numpy
     setuptools
 
-    uvloop # linux and x86_64
     exllamav2
     exllamav3
+  ] ++ lib.optionals stdenv.hostPlatform.isLinux [
+    uvloop
   ];
 
   postPatch = ''
@@ -103,9 +104,10 @@ python3Packages.buildPythonApplication {
   '';
 
   meta = {
-    description = "An OAI compatible exllamav2 API that's both lightweight and fast";
+    description = "Official API server for Exllama";
     homepage = "https://github.com/theroyallab/tabbyAPI";
     license = lib.licenses.agpl3Only;
+    platforms = with lib.platforms; windows ++ linux;
     mainProgram = "tabbyapi";
   };
 }

@@ -3,13 +3,10 @@
 , python3Packages
 , pkgs
 , symlinkJoin
+, cudaSupport ? python3Packages.torch.cudaSupport
+, cudaPackages ? python3Packages.torch.cudaPackages
 ,
-}:
-let
-  inherit (python3Packages.torch) cudaPackages;
-  inherit (cudaPackages) backendStdenv;
-in
-python3Packages.buildPythonPackage rec{
+}: python3Packages.buildPythonPackage rec{
   pname = "exllamav3";
   version = "0.0.18";
   pyproject = true;
@@ -41,14 +38,12 @@ python3Packages.buildPythonPackage rec{
   dependencies = with python3Packages; [
     torch
     flash-attn
-    ninja
     tokenizers
     numpy
     rich
     typing-extensions
     safetensors
     ninja
-
     pillow
     pyyaml
     marisa-trie
@@ -57,27 +52,27 @@ python3Packages.buildPythonPackage rec{
     formatron
   ];
 
-  # TODO: remove TORCH_CUDA_ARCH_LIST hardcoding
-  preConfigure = ''
-    export CC=${lib.getExe' backendStdenv.cc "cc"}
-    export CXX=${lib.getExe' backendStdenv.cc "c++"}
-    export TORCH_CUDA_ARCH_LIST="8.9+PTX;8.9"
-    export FORCE_CUDA=1
-  '';
+  stdenv = cudaPackages.backendStdenv;
 
-  env.CUDA_HOME = symlinkJoin {
-    name = "cuda-redist";
-    paths = with cudaPackages; [
-      cuda_cudart # cuda_runtime.h
-      cuda_nvcc
-    ];
+  env = {
+    CUDA_HOME = symlinkJoin {
+      name = "cuda-redist";
+      paths = with cudaPackages; [
+        cuda_cudart # cuda_runtime.h
+        cuda_nvcc
+      ];
+    };
+    TORCH_CUDA_ARCH_LIST = "8.9+PTX;8.9";
   };
 
   pythonImportsCheck = [ "exllamav3" ];
 
   meta = {
-    description = "An optimized quantization and inference library for running LLMs locally on modern consumer-class GPUs";
+    description = "Quantization and inference library for running LLMs locally on modern consumer-class GPUs";
     homepage = "https://github.com/turboderp-org/exllamav3";
+    changelog = "https://github.com/turboderp-org/exllamav3/releases/tag/${src.rev}";
     license = lib.licenses.mit;
+    platforms = with lib.platforms; windows ++ linux;
+    broken = !cudaSupport;
   };
 }
