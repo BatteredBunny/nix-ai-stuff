@@ -11,14 +11,14 @@ let
 in
 python3Packages.buildPythonPackage rec{
   pname = "exllamav3";
-  version = "0.0.16";
+  version = "0.0.18";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "turboderp-org";
     repo = "exllamav3";
     rev = "v${version}";
-    hash = "sha256-tWNBgkDXl4krUgtYcXgfv4GXPtZxlJcnIWf8nqb0u4I=";
+    hash = "sha256-E0/RNSmxj+X5PgsWi5LVcUsiTl73ladIYo00SJTF13g=";
   };
 
   nativeBuildInputs = with pkgs.python3Packages; [
