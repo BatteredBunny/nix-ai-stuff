@@ -20,9 +20,10 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , ...
+    {
+      self,
+      nixpkgs,
+      ...
     }:
     let
       inherit (nixpkgs) lib;
@@ -31,59 +32,63 @@
 
       forAllSystems = lib.genAttrs systems;
 
-      nixpkgsFor = forAllSystems (system: import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          cudaSupport = true;
-        };
-      });
+      nixpkgsFor = forAllSystems (
+        system:
+        import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            cudaSupport = true;
+          };
+        }
+      );
     in
     {
-      devShells = forAllSystems (system:
+      devShells = forAllSystems (
+        system:
         let
           pkgs = nixpkgsFor.${system};
         in
         {
           default = pkgs.mkShell {
-            buildInputs = with pkgs;
-              [
-                python3
-                cudatoolkit
-              ];
+            buildInputs = with pkgs; [
+              python3
+              cudatoolkit
+            ];
 
             shellHook = ''
               export CUDA_PATH=${pkgs.cudatoolkit}
             '';
           };
-        });
+        }
+      );
 
-      overlays.default = final: prev:
-        rec {
-          # Removed packages
-          flash-attn = throw "flash-attn has been upstreamed to nixpkgs";
-          autogptq = throw "autogptq removed since the repo is archived";
-          ava = throw "ava & ava-prebuilt removed since the package hasn't been updated in a while";
-          ava-prebuilt = ava;
-          ava-headless = ava;
-          dadaptation = kohya_ss;
-          prodigyopt = kohya_ss;
-          kohya_ss = throw "kohya_ss package is unmaintained and broken";
+      overlays.default = final: prev: rec {
+        # Removed packages
+        flash-attn = throw "flash-attn has been upstreamed to nixpkgs";
+        autogptq = throw "autogptq removed since the repo is archived";
+        ava = throw "ava & ava-prebuilt removed since the package hasn't been updated in a while";
+        ava-prebuilt = ava;
+        ava-headless = ava;
+        dadaptation = kohya_ss;
+        prodigyopt = kohya_ss;
+        kohya_ss = throw "kohya_ss package is unmaintained and broken";
 
-          kbnf = throw "kbnf has been upstreamed to nixpkgs";
-          general-sam = throw "general-sam has been upstreamed to nixpkgs";
-          formatron = throw "formatron has been upstreamed to nixpkgs";
+        kbnf = throw "kbnf has been upstreamed to nixpkgs";
+        general-sam = throw "general-sam has been upstreamed to nixpkgs";
+        formatron = throw "formatron has been upstreamed to nixpkgs";
 
-          exllamav2 = final.callPackage ./pkgs/exllamav2.nix { };
-          exllamav3 = final.callPackage ./pkgs/exllamav3.nix { };
-          tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };
-          lycoris-lora = final.callPackage ./pkgs/lycoris-lora.nix { };
-          open-clip-torch = final.callPackage ./pkgs/open-clip-torch.nix { };
-          rouge = final.callPackage ./pkgs/rouge.nix { };
-          tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { inherit exllamav2 exllamav3; };
-        };
+        exllamav2 = final.callPackage ./pkgs/exllamav2.nix { };
+        exllamav3 = final.callPackage ./pkgs/exllamav3.nix { };
+        tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };
+        lycoris-lora = final.callPackage ./pkgs/lycoris-lora.nix { };
+        open-clip-torch = final.callPackage ./pkgs/open-clip-torch.nix { };
+        rouge = final.callPackage ./pkgs/rouge.nix { };
+        tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { inherit exllamav2 exllamav3; };
+      };
 
-      packages = forAllSystems (system:
+      packages = forAllSystems (
+        system:
         let
           pkgs = nixpkgsFor.${system};
         in

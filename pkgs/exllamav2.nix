@@ -1,12 +1,13 @@
-{ python3Packages
-, fetchFromGitHub
-, pkgs
-, lib
-, cudaSupport ? python3Packages.torch.cudaSupport
-, cudaPackages ? python3Packages.torch.cudaPackages
-, cudaCapabilities ? python3Packages.torch.cudaCapabilities
-,
-}: python3Packages.buildPythonPackage rec {
+{
+  python3Packages,
+  fetchFromGitHub,
+  pkgs,
+  lib,
+  cudaSupport ? python3Packages.torch.cudaSupport,
+  cudaPackages ? python3Packages.torch.cudaPackages,
+  cudaCapabilities ? python3Packages.torch.cudaCapabilities,
+}:
+python3Packages.buildPythonPackage rec {
   pname = "exllamav2";
   version = "0.3.2";
   pyproject = true;

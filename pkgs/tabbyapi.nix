@@ -1,9 +1,9 @@
-{ lib
-, fetchFromGitHub
-, exllamav2
-, exllamav3
-, python3Packages
-,
+{
+  lib,
+  fetchFromGitHub,
+  exllamav2,
+  exllamav3,
+  python3Packages,
 }:
 python3Packages.buildPythonApplication {
   pname = "tabbyapi";
@@ -31,35 +31,38 @@ python3Packages.buildPythonApplication {
     "pydantic" # Wants 2.11.0 but nixpkgs has newer version
   ];
 
-  dependencies = with python3Packages; [
-    fastapi # fastapi-slim
-    pydantic
-    ruamel-yaml
-    rich
-    uvicorn
-    jinja2
-    loguru
-    sse-starlette
-    packaging
-    tokenizers
-    formatron
-    kbnf
-    aiofiles
-    aiohttp
-    async-lru
-    huggingface-hub
-    psutil
-    httptools
-    pillow
+  dependencies =
+    with python3Packages;
+    [
+      fastapi # fastapi-slim
+      pydantic
+      ruamel-yaml
+      rich
+      uvicorn
+      jinja2
+      loguru
+      sse-starlette
+      packaging
+      tokenizers
+      formatron
+      kbnf
+      aiofiles
+      aiohttp
+      async-lru
+      huggingface-hub
+      psutil
+      httptools
+      pillow
 
-    numpy
-    setuptools
+      numpy
+      setuptools
 
-    exllamav2
-    exllamav3
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [
-    uvloop
-  ];
+      exllamav2
+      exllamav3
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      uvloop
+    ];
 
   postPatch = ''
     substituteInPlace pyproject.toml --replace-fail 'fastapi-slim' 'fastapi'
