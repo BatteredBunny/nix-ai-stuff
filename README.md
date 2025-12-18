@@ -36,12 +36,11 @@ nixpkgs = {
     ];
     config = {
         allowUnfree = true;
-        cudaSupport = true;
     };
 };
 
 environment.systemPackages = with pkgs; [
-    tabbyapi # Api for exllama
+    pkgsCuda.tabbyapi # Api for exllama
 ];
 ```
 
