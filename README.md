@@ -44,5 +44,35 @@ environment.systemPackages = with pkgs; [
 ];
 ```
 
+## Using tabbyAPI on NixOS
+
+```nix
+imports = [
+    inputs.nix-ai-stuff.nixosModules.tabbyapi
+];
+
+nixpkgs.overlays = [
+    inputs.nix-ai-stuff.overlays.default
+];
+
+services.tabbyapi = {
+    enable = true;
+    package = pkgs.pkgsCuda.tabbyapi;
+    settings = {
+        model = {
+            model_name = "qwen-8b";
+            model_dir = pkgs.tabbyapiModelDir {
+                qwen-8b = pkgs.fetchgit {
+                    url = "https://huggingface.co/turboderp/Qwen3-VL-8B-Instruct-exl3";
+                    rev = "652ab6be95b3e2880e78d87269013d98ca9c392d"; # 4bpw
+                    fetchLFS = true;
+                    hash = "sha256-n+9Mt7EZ3XHM0w8oGUZr4EBz91EFyp1VBpvl9Php/QM=";
+                };
+            };
+        };
+    };
+};
+```
+
 # Similar projects
 - [nixifed-ai](https://github.com/nixified-ai/flake)
