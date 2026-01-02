@@ -88,22 +88,23 @@ in
           model = lib.mkOption {
             description = "Model loading configuration.";
             default = { };
+            example = {
+              model_name = "qwen-8b";
+              model_dir = pkgs.tabbyapiModelDir {
+                qwen-8b = pkgs.fetchgit {
+                  url = "https://huggingface.co/turboderp/Qwen3-VL-8B-Instruct-exl3";
+                  rev = "652ab6be95b3e2880e78d87269013d98ca9c392d"; # 4bpw
+                  fetchLFS = true;
+                  hash = "sha256-n+9Mt7EZ3XHM0w8oGUZr4EBz91EFyp1VBpvl9Php/QM=";
+                };
+              };
+            };
             type = lib.types.submodule {
               freeformType = yamlFormat.type;
               options = {
                 model_dir = lib.mkOption {
                   type = lib.types.str;
                   default = "models";
-                  example = ''
-                    pkgs.tabbyapiModelDir {
-                      qwen-8b = pkgs.fetchgit {
-                        url = "https://huggingface.co/turboderp/Qwen3-VL-8B-Instruct-exl3";
-                        rev = "652ab6be95b3e2880e78d87269013d98ca9c392d"; # 4bpw
-                        fetchLFS = true;
-                        hash = "sha256-n+9Mt7EZ3XHM0w8oGUZr4EBz91EFyp1VBpvl9Php/QM=";
-                      };
-                    };
-                  '';
                   description = "Directory to look for models. Relative to the state directory.";
                 };
 
@@ -133,7 +134,7 @@ in
 
                 dummy_model_names = lib.mkOption {
                   type = lib.types.listOf lib.types.str;
-                  default = ["gpt-3.5-turbo"];
+                  default = [ "gpt-3.5-turbo" ];
                   description = "List of fake model names sent via the /v1/models endpoint.";
                 };
               };
