@@ -1,8 +1,6 @@
 {
   lib,
   fetchFromGitHub,
-  exllamav2,
-  exllamav3,
   python3Packages,
 }:
 python3Packages.buildPythonApplication {
