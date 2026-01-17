@@ -7,7 +7,7 @@
   cudaPackages ? python3Packages.torch.cudaPackages,
   cudaCapabilities ? python3Packages.torch.cudaCapabilities,
 }:
-python3Packages.buildPythonPackage rec {
+python3Packages.buildPythonPackage.override { stdenv = cudaPackages.backendStdenv; } rec {
   pname = "exllamav2";
   version = "0.3.2";
   pyproject = true;
@@ -18,8 +18,6 @@ python3Packages.buildPythonPackage rec {
     rev = "v${version}";
     hash = "sha256-WbpbANenOuy6F0qAKVKAmolHjgRKfPxSVud8FZG1TXw=";
   };
-
-  stdenv = cudaPackages.backendStdenv;
 
   build-system = with python3Packages; [
     setuptools
