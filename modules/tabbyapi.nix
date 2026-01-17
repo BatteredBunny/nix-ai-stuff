@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  linkFarm,
   ...
 }:
 
@@ -90,14 +91,15 @@ in
             default = { };
             example = {
               model_name = "qwen-8b";
-              model_dir = pkgs.tabbyapiModelDir {
-                qwen-8b = pkgs.fetchgit {
-                  url = "https://huggingface.co/turboderp/Qwen3-VL-8B-Instruct-exl3";
-                  rev = "652ab6be95b3e2880e78d87269013d98ca9c392d"; # 4bpw
-                  fetchLFS = true;
-                  hash = "sha256-n+9Mt7EZ3XHM0w8oGUZr4EBz91EFyp1VBpvl9Php/QM=";
-                };
-              };
+              model_dir =
+                (linkFarm "models" {
+                  qwen-8b = pkgs.fetchgit {
+                    url = "https://huggingface.co/turboderp/Qwen3-VL-8B-Instruct-exl3";
+                    rev = "652ab6be95b3e2880e78d87269013d98ca9c392d"; # 4bpw
+                    fetchLFS = true;
+                    hash = "sha256-n+9Mt7EZ3XHM0w8oGUZr4EBz91EFyp1VBpvl9Php/QM=";
+                  };
+                }).outPath;
             };
             type = lib.types.submodule {
               freeformType = yamlFormat.type;
