@@ -4,15 +4,16 @@
       "locked": {
         "lastModified": 1768935526,
         "narHash": "sha256-ve8YbQI2xDIdHHcI0m63zxENC0hwPWkeX8fniPahn08=",
-        "ref": "refs/heads/exllama",
+        "owner": "BatteredBunny",
+        "repo": "nixpkgs",
         "rev": "62065ae3cf30162d1b1e6342cf9ab645dece2187",
-        "revCount": 929325,
-        "type": "git",
-        "url": "file:///home/lain/Documents/git/nixpkgs"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/lain/Documents/git/nixpkgs"
+        "owner": "BatteredBunny",
+        "ref": "exllama",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "root": {
