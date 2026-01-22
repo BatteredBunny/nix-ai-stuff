@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:BatteredBunny/nixpkgs/exllama";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   nixConfig = {
