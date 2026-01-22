@@ -80,10 +80,10 @@
         kbnf = throw "kbnf has been upstreamed to nixpkgs";
         general-sam = throw "general-sam has been upstreamed to nixpkgs";
         formatron = throw "formatron has been upstreamed to nixpkgs";
+        exllamav2 = throw "exllamav2 has been upstreamed to nixpkgs";
+        exllamav3 = throw "exllamav3 has been upstreamed to nixpkgs";
 
-        exllamav2 = final.callPackage ./pkgs/exllamav2.nix { };
-        exllamav3 = final.callPackage ./pkgs/exllamav3.nix { };
-        tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { inherit exllamav2 exllamav3; };
+        tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { };
         tabbyapiModelDir = final.callPackage ./pkgs/tabbyapiModelDir.nix { };
 
         tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };

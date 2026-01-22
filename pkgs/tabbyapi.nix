@@ -1,9 +1,8 @@
 {
   lib,
   fetchFromGitHub,
-  exllamav2,
-  exllamav3,
   python3Packages,
+  stdenv,
 }:
 python3Packages.buildPythonApplication {
   pname = "tabbyapi";
@@ -53,7 +52,6 @@ python3Packages.buildPythonApplication {
       psutil
       httptools
       pillow
-
       numpy
       setuptools
 
@@ -112,5 +110,6 @@ python3Packages.buildPythonApplication {
     license = lib.licenses.agpl3Only;
     platforms = with lib.platforms; windows ++ linux;
     mainProgram = "tabbyapi";
+    maintainers = with lib.maintainers; [ BatteredBunny ];
   };
 }
