@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 packages=(
-  "exllamav2"
-  "exllamav3"
   "tabbyapi"
   "tensor_parallel"
   "lycoris-lora"
