@@ -2,7 +2,7 @@
 Nix flake for several AI projects focusing on nvidia/CUDA.
 
 ## Packages
-- [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2025-12-16
+- [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2026-01-20
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 2.0.2
 - [rouge](https://github.com/pltrdy/rouge) 1.0.1
