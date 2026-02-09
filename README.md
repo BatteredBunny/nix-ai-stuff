@@ -2,13 +2,12 @@
 Nix flake for several AI projects focusing on nvidia/CUDA.
 
 ## Packages
-- [tabbyapi](https://github.com/theroyallab/tabbyAPI) unstable-2026-01-20
 - [tensor_parallel](https://github.com/BlackSamorez/tensor_parallel) 2.0.0
 - [lycoris-lora](https://github.com/KohakuBlueleaf/LyCORIS) 2.0.2
 - [rouge](https://github.com/pltrdy/rouge) 1.0.1
 
 ```
-nix run github:BatteredBunny/nix-ai-stuff#tabbyapi
+nix run github:BatteredBunny/nix-ai-stuff#rouge
 ```
 
 ## Overlay usage
@@ -47,10 +46,6 @@ environment.systemPackages = with pkgs; [
 ```nix
 imports = [
     inputs.nix-ai-stuff.nixosModules.tabbyapi
-];
-
-nixpkgs.overlays = [
-    inputs.nix-ai-stuff.overlays.default
 ];
 
 services.tabbyapi = {

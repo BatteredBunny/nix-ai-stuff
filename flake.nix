@@ -82,10 +82,9 @@
         formatron = throw "formatron has been upstreamed to nixpkgs";
         exllamav2 = throw "exllamav2 has been upstreamed to nixpkgs";
         exllamav3 = throw "exllamav3 has been upstreamed to nixpkgs";
+        tabbyapi = throw "tabbyapi has been upstreamed to nixpkgs";
 
-        tabbyapi = final.callPackage ./pkgs/tabbyapi.nix { };
         tabbyapiModelDir = final.callPackage ./pkgs/tabbyapiModelDir.nix { };
-
         tensor_parallel = final.callPackage ./pkgs/tensor_parallel.nix { };
         lycoris-lora = final.callPackage ./pkgs/lycoris-lora.nix { };
         open-clip-torch = final.callPackage ./pkgs/open-clip-torch.nix { };

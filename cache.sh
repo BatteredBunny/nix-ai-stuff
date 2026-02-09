@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 packages=(
-  "tabbyapi"
   "tensor_parallel"
   "lycoris-lora"
   "rouge"
