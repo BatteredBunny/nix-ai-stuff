@@ -64,7 +64,7 @@
       );
 
       nixosModules = {
-        tabbyapi = import ./modules/tabbyapi.nix;
+        tabbyapi = throw "tabbyapi module has been upstreamed to nixpkgs";
       };
 
       overlays.default = final: prev: rec {
